@@ -1,4 +1,4 @@
-# uni
+# vite-uniapp-template WIP
 
 ## Project setup
 ```
