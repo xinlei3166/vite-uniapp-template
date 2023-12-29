@@ -1,0 +1,24 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "lib": ["esnext", "dom"],
+    "types": ["vite/client", "node", "@dcloudio/types", "nutui-uniapp/global.d.ts"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@packages/*": ["./src/packages/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules"]
+}

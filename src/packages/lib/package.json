@@ -1,0 +1,15 @@
+{
+  "name": "@packages/lib",
+  "version": "1.0.0",
+  "description": "@packages/lib",
+  "main": "index.ts",
+  "keywords": [],
+  "author": "君惜",
+  "license": "MIT",
+  "dependencies": {
+    "@packages/types": "workspace:*",
+    "@packages/utils": "workspace:*",
+    "axios": "^1.6.2",
+    "dayjs": "^1.11.10"
+  }
+}

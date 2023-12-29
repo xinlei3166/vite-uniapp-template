@@ -1,0 +1,29 @@
+.nut-form-custom {
+  .nut-cell-group__wrap {
+    background: none !important;
+    box-shadow: none !important;
+    padding-right: 32rpx !important;
+    padding-left: 32rpx !important;
+  }
+
+  .nut-form-item {
+    border-radius: 16rpx !important;
+    &:not(:nth-last-of-type(1)) {
+      margin-bottom: 32rpx !important;
+    }
+  }
+
+  .nut-input {
+    border-bottom: none !important;
+  }
+  .uni-input-input {
+    color: initial !important;
+  }
+}
+
+.nut-form-btn-wrap {
+  margin: 64rpx 0 32rpx !important;
+  .nut-form-btn {
+    border-radius: 8rpx !important;
+  }
+}

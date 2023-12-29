@@ -1,0 +1,114 @@
+{
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/home/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/news/index",
+                "text": "咨讯"
+            },
+            {
+                "pagePath": "pages/message/index",
+                "text": "消息"
+            },
+            {
+                "pagePath": "pages/my/index",
+                "text": "我的"
+            }
+        ]
+    },
+    "pages": [
+        {
+            "auth": false,
+            "path": "pages/home/index",
+            "style": {
+                "navigationBarTitleText": "首页"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/news/index",
+            "style": {
+                "navigationBarTitleText": "咨讯"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/message/index",
+            "style": {
+                "navigationBarTitleText": "消息"
+            }
+        },
+        {
+            "auth": true,
+            "path": "pages/my/index",
+            "style": {
+                "navigationBarTitleText": "我的"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/login/index",
+            "style": {
+                "navigationBarTitleText": "登录"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/login/register",
+            "style": {
+                "navigationBarTitleText": "注册"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/components/router/index",
+            "style": {
+                "navigationBarTitleText": "router"
+            }
+        },
+        {
+            "auth": true,
+            "path": "pages/components/store/index",
+            "style": {
+                "navigationBarTitleText": "store"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/components/bus/index",
+            "style": {
+                "navigationBarTitleText": "bus"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/components/provide/index",
+            "style": {
+                "navigationBarTitleText": "provide"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/components/table/index",
+            "style": {
+                "navigationBarTitleText": "table"
+            }
+        },
+        {
+            "auth": false,
+            "path": "pages/components/sortable/index",
+            "style": {
+                "navigationBarTitleText": "sortable"
+            }
+        }
+    ],
+    "globalStyle": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "uni-app",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    }
+}

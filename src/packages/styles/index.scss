@@ -1,0 +1,99 @@
+@import './theme';
+@import './nut';
+
+// required
+.label-required::before {
+  content: '*';
+  color: $danger-color;
+  margin-right: 4px;
+}
+
+// overflow
+.overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// column-mark
+.column-tooltip {
+  .ivu-tooltip-content {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+}
+
+.column-mark {
+  display: inline-block;
+  width: 70px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// dropdown-icon
+.dropdown-icon {
+  font-size: 10px;
+  vertical-align: baseline;
+}
+
+// card
+.g-card {
+  display: flex;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+// readonly-text
+.readonly-text {
+  .ivu-input[disabled] {
+    background-color: transparent;
+    opacity: 1;
+    cursor: default;
+    color: $text-color;
+  }
+}
+
+// nprogress style
+#nprogress .bar {
+  background: $primary-color;
+}
+
+// text-btn
+.text-btn-success {
+  cursor: pointer;
+  color: $success-color;
+}
+
+.text-btn-error {
+  cursor: pointer;
+  color: $danger-color;
+}
+
+.text-btn, .phone-icon, .im-icon {
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.text-btn + .text-btn {
+  margin-left: 8px;
+}
+
+.phone-icon {
+  font-size: 20px;
+  margin-left: 8px;
+}
+
+.text-color {
+  color: $text-color;
+}
+
+.text-light {
+  color: $text-color-2;
+}
+
+.bg-white {
+  background: #fff;
+}
