@@ -1,0 +1,1 @@
+import{$ as n,a0 as e,b as r,r as a,g as t}from"./index-9ea87e0d.js";function i(i){const s=n(i,null);if(s){const n=t(),{add:a,remove:i,internalChildren:d}=s;a(n),e((()=>i(n)));return{parent:s,index:r((()=>d.indexOf(n)))}}return{parent:null,index:a(-1)}}export{i as u};
