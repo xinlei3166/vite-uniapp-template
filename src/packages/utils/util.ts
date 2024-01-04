@@ -1,7 +1,7 @@
 import qs from 'qs'
 import { isObject, isArray } from './is'
 import sm3 from './sm3'
-import { customAlphabet } from 'nanoid'
+import { customAlphabet } from 'nanoid/non-secure'
 import { foreignPhonePattern, phonePattern } from './patterns'
 
 /**

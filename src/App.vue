@@ -2,10 +2,9 @@
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
 import { onMounted } from 'vue'
 import { useUserStore } from '@/store/user'
-import { getToken } from '@packages/utils'
+import { getToken, interceptRoute } from '@packages/utils'
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
-import { interceptRoute } from '@/utils/interceptor'
 
 dayjs.locale('zh-cn')
 

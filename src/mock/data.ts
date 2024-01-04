@@ -17,11 +17,11 @@ export const getList = function (options: Record<string, any> = {}) {
     }
     arr.push(obj)
   }
-  return {
+  return mock.response({
     code: 0,
     data: {
       list: arr,
       total: 100
     }
-  }
+  })
 }

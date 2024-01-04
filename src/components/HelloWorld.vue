@@ -1,7 +1,7 @@
 <template>
   <view class="card" style="padding-left: 64px">
     <view>
-      <image alt="Vue logo" src="../assets/logo.png" />
+      <image alt="Vue logo" src="/static/img/logo.png" />
     </view>
     <text>{{ msg }}</text>
 

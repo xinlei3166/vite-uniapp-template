@@ -1,16 +1,17 @@
 <template>
   <nut-searchbar
     v-model="search.keyword"
-    class="search"
+    custom-class="search"
+    custom-style="margin-bottom: 24rpx;"
     shape="round"
     placeholder="请输入搜索关键词"
   ></nut-searchbar>
   <view class="list flex flex-col">
     <view v-for="(item, index) in data" :key="index" class="list-item flex items-center">
       <view class="list-item-left flex-shrink-0">
-        <text class="icon-wrap">
-          <nut-icon class="icon" name="star-n" />
-        </text>
+        <view class="icon-wrap">
+          <nut-icon custom-class="icon" size="28" custom-color="#fff" name="star-n" />
+        </view>
       </view>
       <view class="list-item-right flex flex-1 flex-col justify-between">
         <view class="list-item-title flex justify-between">

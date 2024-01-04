@@ -1,7 +1,7 @@
 <template>
   <view class="login">
     <view class="login-title">登录账号</view>
-    <nut-form ref="formRef" :model-value="form" class="login-form nut-form-custom">
+    <nut-form ref="formRef" :model-value="form" custom-class="login-form nut-form-custom">
       <nut-form-item
         label="账号"
         prop="account"
@@ -9,7 +9,7 @@
       >
         <nut-input
           v-model="form.account"
-          class="form-item-input"
+          custom-class="form-item-input"
           placeholder="请输入账号"
           @blur="onBlurValidate('account')"
         />
@@ -21,14 +21,16 @@
       >
         <nut-input
           v-model="form.password"
-          class="form-item-input"
+          custom-class="form-item-input"
           type="password"
           placeholder="请输入密码"
           @blur="onBlurValidate('password')"
         />
       </nut-form-item>
       <view class="nut-form-btn-wrap">
-        <nut-button class="nut-form-btn" block type="primary" @click="onSubmit">登录</nut-button>
+        <nut-button custom-class="nut-form-btn" block type="primary" @click="onSubmit">
+          登录
+        </nut-button>
       </view>
     </nut-form>
     <view class="tip-btn-wrap">

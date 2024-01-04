@@ -12,9 +12,9 @@ import 'virtual:uno.css'
 export function createApp() {
   const app = createSSRApp(App)
 
-  const systemInfo = uni?.getSystemInfoSync()
+  const systemInfo = uni?.getSystemInfoSync?.()
   console.log('systemInfo', systemInfo)
-  // if (import.meta.env.DEV && ['web'].includes(systemInfo.uniPlatform)) {
+  // if (import.meta.env.DEV && ['web'].includes(systemInfo?.uniPlatform)) {
   //   import('vconsole').then((module: any) => {
   //     new module.default()
   //   })

@@ -75,8 +75,10 @@ export function useSortable(list: Ref<any[]>, selector: string, options: Sortabl
   }
 
   onMounted(() => {
-    const el = document.querySelector(selector) as HTMLElement
-    sortable.value = Sortable.create(el, mergedOptions)
+    if (document) {
+      const el = document.querySelector(selector) as HTMLElement
+      sortable.value = Sortable.create(el, mergedOptions)
+    }
   })
 
   return { sortable, drag, list }

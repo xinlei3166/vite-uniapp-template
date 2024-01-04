@@ -2,7 +2,7 @@
   <view class="list flex flex-col">
     <view v-for="(item, index) in data" :key="index" class="list-item flex">
       <view class="list-item-left">
-        <image class="list-item-img" src="https://fastly.jsdelivr.net/npm/@vant/assets/ipad.jpeg" />
+        <image class="list-item-img" src="/static/img/ipad.jpeg" />
       </view>
       <view class="list-item-right flex flex-col justify-between">
         <view class="list-item-title">这是一个{{ tab }}的标题</view>

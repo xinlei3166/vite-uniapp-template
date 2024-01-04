@@ -50,8 +50,8 @@ export default ({ mode, command }) => {
       Components({
         resolvers: [NutResolver()]
       }),
-      uni(),
       UnoCSS(),
+      uni(),
       createHtmlPlugin({
         inject: {
           data: {

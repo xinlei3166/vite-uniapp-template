@@ -1,5 +1,5 @@
-import pages from '../pages.json'
-import { getToken } from '@packages/utils'
+import pages from '../../pages.json'
+import { getToken } from './internal'
 
 const config = {
   // 页面都不需要登录

@@ -4,7 +4,7 @@
       <view class="list-item-left flex-shrink-0">
         <image
           class="list-item-img"
-          src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg"
+          src="/static/img/apple-1.jpeg"
         />
       </view>
       <view class="list-item-right flex flex-col justify-between">

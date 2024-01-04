@@ -11,7 +11,7 @@ pnpm
 
 ## Quick start
 ```
-git clone https://github.com/xinlei3166/vite-vue-mobile-template.git
+git clone https://github.com/xinlei3166/vite-uniapp-template.git
 ```
 
 ## Project setup

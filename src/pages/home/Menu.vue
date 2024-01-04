@@ -4,45 +4,45 @@
       class="card-menu-item flex flex-col items-center"
       @click="onClickMenu('/pages/components/store/index')"
     >
-      <text class="icon-wrap order1">
-        <nut-icon class="icon" name="edit" />
-      </text>
+      <view class="icon-wrap order1">
+        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="edit" />
+      </view>
       <text class="text">Store</text>
     </view>
     <view
       class="card-menu-item flex flex-col items-center"
       @click="onClickMenu('/pages/components/provide/index')"
     >
-      <text class="icon-wrap order3">
-        <nut-icon class="icon" name="star-n" />
-      </text>
+      <view class="icon-wrap order3">
+        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="star-n" />
+      </view>
       <text class="text">Provide</text>
     </view>
     <view
       class="card-menu-item flex flex-col items-center"
       @click="onClickMenu('/pages/components/bus/index')"
     >
-      <text class="icon-wrap order2">
-        <nut-icon class="icon" name="success" />
-      </text>
+      <view class="icon-wrap order2">
+        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="success" />
+      </view>
       <text class="text">Bus</text>
     </view>
     <view
       class="card-menu-item flex flex-col items-center"
       @click="onClickMenu('/pages/components/table/index')"
     >
-      <text class="icon-wrap order4">
-        <nut-icon class="icon" name="date" />
-      </text>
+      <view class="icon-wrap order4">
+        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="date" />
+      </view>
       <text class="text">Table</text>
     </view>
     <view
       class="card-menu-item flex flex-col items-center"
       @click="onClickMenu('/pages/components/sortable/index')"
     >
-      <text class="icon-wrap order5">
-        <nut-icon class="icon" name="category" />
-      </text>
+      <view class="icon-wrap order5">
+        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="category" />
+      </view>
       <text class="text">Sortable</text>
     </view>
   </view>
@@ -65,9 +65,6 @@ const onClickMenu = (path: string) => {
 
 .card-menu-item {
   width: 20%;
-  //&:nth-of-type(n + 4) {
-  //  margin-top: 40rpx;
-  //}
   .icon-wrap.order1 {
     background: #f87171;
   }
@@ -95,8 +92,8 @@ const onClickMenu = (path: string) => {
     height: 80rpx;
   }
   .icon {
-    font-size: 42rpx;
-    color: #fff;
+    font-size: 42rpx !important;
+    color: #fff !important;
   }
   .text {
     margin-top: 16rpx;

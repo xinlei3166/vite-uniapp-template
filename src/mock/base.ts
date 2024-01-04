@@ -1,4 +1,14 @@
-import { uniqueId } from '@packages/utils'
+import { uniqueId, delay } from '@packages/utils'
+
+const waitTime = 300
+export const response = async (data: any) => {
+  uni.showLoading({
+    title: '加载中...'
+  })
+  await delay(waitTime)
+  uni.hideLoading()
+  return data
+}
 
 export const genString = length => {
   let result = ''
@@ -165,6 +175,7 @@ export const genImg = () => {
 }
 
 export default {
+  response,
   genString,
   genNumber,
   genPhone,

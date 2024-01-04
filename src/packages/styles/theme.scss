@@ -1,6 +1,6 @@
 @import "nutui-uniapp/styles/variables.scss";
 
-:root {
+:root, page {
   --nut-primary-color: #0077FA;
   --nut-primary-color-end: #2997ff;
   --nut-success-color: #26BF26;
@@ -20,6 +20,7 @@
 }
 
 // scss vars
+$bg-color: #f5f5f5;
 $primary-color: var(--nut-primary-color);
 $primary-color-end: var(--nut-primary-color-end);
 $success-color: var(--nut-success-color);

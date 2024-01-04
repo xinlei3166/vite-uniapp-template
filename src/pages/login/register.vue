@@ -1,7 +1,7 @@
 <template>
   <view class="register">
     <view class="register-title">注册账号</view>
-    <nut-form ref="formRef" :model-value="form" class="register-form nut-form-custom">
+    <nut-form ref="formRef" :model-value="form" custom-class="register-form nut-form-custom">
       <nut-form-item
         label="账号"
         prop="account"
@@ -75,7 +75,7 @@
         />
       </nut-form-item>
       <view class="nut-form-btn-wrap">
-        <nut-button class="nut-form-btn" block type="primary" @click="onSubmit">注册</nut-button>
+        <nut-button custom-class="nut-form-btn" block type="primary" @click="onSubmit">注册</nut-button>
       </view>
     </nut-form>
     <view class="tip-btn-wrap">

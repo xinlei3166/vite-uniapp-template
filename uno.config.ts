@@ -1,4 +1,4 @@
-import { defineConfig, presetUno, presetAttributify } from 'unocss'
+import { defineConfig, presetAttributify } from 'unocss'
 import presetWeapp from 'unocss-preset-weapp'
 import { extractorAttributify, transformerClass } from 'unocss-preset-weapp/transformer'
 
@@ -12,7 +12,6 @@ export default defineConfig({
     presetWeapp({ platform: 'uniapp', whRpx: false }),
     // @ts-ignore
     presetWeappAttributify(),
-    presetUno(),
     presetAttributify({
       prefix: 'un-',
       prefixedOnly: false
@@ -22,41 +21,25 @@ export default defineConfig({
   transformers: [
     // https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerAttributify
     // @ts-ignore
-    transformerAttributify({
-      transformRules: {
-        '?': '-wenhao-',
-        '.': '-d111-',
-        '/': '-s111-',
-        ':': '-c111-',
-        '%': '-p111-',
-        '!': '-e111-',
-        '#': '-w111-',
-        '(': '-b111l-',
-        ')': '-b111r-',
-        '[': '-f111l-',
-        ']': '-f111r-',
-        $: '-r111-',
-        ',': '-r222-'
-      }
-    }),
+    transformerAttributify(),
     // https://github.com/MellowCo/unocss-preset-weapp/tree/main/src/transformer/transformerClass
     // @ts-ignore
     transformerClass({
-      transformRules: {
-        '?': '-wenhao-',
-        '.': '-d111-',
-        '/': '-s111-',
-        ':': '-c111-',
-        '%': '-p111-',
-        '!': '-e111-',
-        '#': '-w111-',
-        '(': '-b111l-',
-        ')': '-b111r-',
-        '[': '-f111l-',
-        ']': '-f111r-',
-        $: '-r111-',
-        ',': '-r222-'
-      }
+      // transformRules: {
+      //   '?': '-wenhao-',
+      //   '.': '-d111-',
+      //   '/': '-s111-',
+      //   ':': '-c111-',
+      //   '%': '-p111-',
+      //   '!': '-e111-',
+      //   '#': '-w111-',
+      //   '(': '-b111l-',
+      //   ')': '-b111r-',
+      //   '[': '-f111l-',
+      //   ']': '-f111r-',
+      //   $: '-r111-',
+      //   ',': '-r222-'
+      // }
     })
   ],
   // @ts-ignore opacity: active, disabled

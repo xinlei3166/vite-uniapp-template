@@ -10,7 +10,7 @@ pwd
 pnpm run build:github
 
 # 进入生成的文件夹
-cd dist
+cd dist/build/h5
 
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
@@ -20,4 +20,4 @@ git add -A
 git commit -m 'deploy to the gh-pages'
 
 # 如果发布到 https://<USERNAME>.github.io
-git push -f git@github.com:xinlei3166/vite-vue-mobile-template.git master:gh-pages
+git push -f git@github.com:xinlei3166/vite-uniapp-template.git master:gh-pages

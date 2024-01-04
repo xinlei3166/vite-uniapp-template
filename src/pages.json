@@ -1,21 +1,33 @@
 {
     "tabBar": {
+      "color": "#7A7E83",
+      "selectedColor": "#0077FA",
+      "borderStyle": "black",
+      "backgroundColor": "#F8F8F8",
         "list": [
             {
                 "pagePath": "pages/home/index",
-                "text": "首页"
+                "text": "首页",
+                "iconPath": "/static/icon/home.png",
+                "selectedIconPath": "/static/icon/home-hl.png"
             },
             {
                 "pagePath": "pages/news/index",
-                "text": "咨讯"
+                "text": "咨讯",
+                "iconPath": "/static/icon/fund.png",
+                "selectedIconPath": "/static/icon/fund-hl.png"
             },
             {
                 "pagePath": "pages/message/index",
-                "text": "消息"
+                "text": "消息",
+                "iconPath": "/static/icon/message.png",
+                "selectedIconPath": "/static/icon/message-hl.png"
             },
             {
                 "pagePath": "pages/my/index",
-                "text": "我的"
+                "text": "我的",
+                "iconPath": "/static/icon/user.png",
+                "selectedIconPath": "/static/icon/user-hl.png"
             }
         ]
     },

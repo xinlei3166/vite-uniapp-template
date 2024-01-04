@@ -1,86 +1,100 @@
 <template>
-  <view class="avatar-info">
-    <view class="title-setting flex items-center justify-between">
-      <text>我的</text>
-      <nut-icon class="title-setting-icon" size="44rpx" name="setting" />
-    </view>
-    <view class="flex items-center">
-      <nut-avatar
-        size="large"
-        style="--nut-avatar-large-width: 100rpx; --nut-avatar-large-height: 100rpx"
-      >
-        <image :src="avatar" />
-      </nut-avatar>
-      <view class="username-phone">
-        <view class="username">{{ userinfo.name || '君惜' }}</view>
-        <view class="phone">{{ hiddenPhone(userinfo.phone) || '188******88' }}</view>
+  <view style="padding-bottom: 20rpx">
+    <view class="avatar-info">
+      <view class="title-setting flex items-center justify-between">
+        <text>我的</text>
+        <nut-icon class="title-setting-icon" size="22" name="setting" />
       </view>
-      <nut-icon class="text-white ml-auto" name="right" size="32rpx" />
+      <view class="flex items-center">
+        <nut-avatar
+          size="large"
+          custom-style="--nut-avatar-large-width: 100rpx; --nut-avatar-large-height: 100rpx"
+        >
+          <image src="/static/img/avatar.png" />
+        </nut-avatar>
+        <view class="username-phone">
+          <view class="username">{{ userinfo.name || '君惜' }}</view>
+          <view class="phone">{{ hiddenPhone(userinfo.phone) || '188******88' }}</view>
+        </view>
+        <nut-icon custom-class="text-white ml-auto" name="right" size="14" />
+      </view>
     </view>
+    <nut-cell-group custom-class="nav-menu" custom-style="margin: 24rpx">
+      <nut-cell icon="home" title="Router" @click="onClickMenu('/pages/components/router/index')">
+        <template #icon>
+          <nut-icon name="home" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+      <nut-cell icon="edit" title="Store" @click="onClickMenu('/pages/components/store/index')">
+        <template #icon>
+          <nut-icon name="edit" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+      <nut-cell
+        icon="star-n"
+        title="Provide"
+        @click="onClickMenu('/pages/components/provide/index')"
+      >
+        <template #icon>
+          <nut-icon name="star-n" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+      <nut-cell icon="success" title="Bus" @click="onClickMenu('/pages/components/bus/index')">
+        <template #icon>
+          <nut-icon name="success" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+      <nut-cell icon="date" title="Table" @click="onClickMenu('/pages/components/table/index')">
+        <template #icon>
+          <nut-icon name="date" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+      <nut-cell
+        icon="category"
+        title="Sortable"
+        @click="onClickMenu('/pages/components/sortable/index')"
+      >
+        <template #icon>
+          <nut-icon name="category" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group custom-class="nav-menu" custom-style="margin: 24rpx">
+      <nut-cell icon="setting" title="Security Settings" is-link>
+        <template #icon>
+          <nut-icon name="setting" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+      <nut-cell icon="message" title="Notification Settings" is-link>
+        <template #icon>
+          <nut-icon name="message" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+    </nut-cell-group>
+    <nut-cell-group custom-class="nav-menu" custom-style="margin: 24rpx">
+      <nut-cell icon="my" title="Logout" @click="onLogout">
+        <template #icon>
+          <nut-icon name="my" custom-class="mr-1" />
+        </template>
+      </nut-cell>
+    </nut-cell-group>
   </view>
-  <nut-cell-group class="nav-menu">
-    <nut-cell icon="home" title="Router" @click="onClickMenu('/pages/components/router/index')">
-      <template #icon>
-        <nut-icon name="home" class="mr-1" />
-      </template>
-    </nut-cell>
-    <nut-cell icon="edit" title="Store" @click="onClickMenu('/pages/components/store/index')">
-      <template #icon>
-        <nut-icon name="edit" class="mr-1" />
-      </template>
-    </nut-cell>
-    <nut-cell icon="star-n" title="Provide" @click="onClickMenu('/pages/components/provide/index')">
-      <template #icon>
-        <nut-icon name="star-n" class="mr-1" />
-      </template>
-    </nut-cell>
-    <nut-cell icon="success" title="Bus" @click="onClickMenu('/pages/components/bus/index')">
-      <template #icon>
-        <nut-icon name="success" class="mr-1" />
-      </template>
-    </nut-cell>
-    <nut-cell icon="date" title="Table" @click="onClickMenu('/pages/components/table/index')">
-      <template #icon>
-        <nut-icon name="date" class="mr-1" />
-      </template>
-    </nut-cell>
-    <nut-cell
-      icon="category"
-      title="Sortable"
-      @click="onClickMenu('/pages/components/sortable/index')"
-    >
-      <template #icon>
-        <nut-icon name="category" class="mr-1" />
-      </template>
-    </nut-cell>
-  </nut-cell-group>
-  <nut-cell-group class="nav-menu">
-    <nut-cell icon="setting" title="Security Settings" is-link>
-      <template #icon>
-        <nut-icon name="setting" class="mr-1" />
-      </template>
-    </nut-cell>
-    <nut-cell icon="message" title="Notification Settings" is-link>
-      <template #icon>
-        <nut-icon name="message" class="mr-1" />
-      </template>
-    </nut-cell>
-  </nut-cell-group>
-  <nut-cell-group class="nav-menu">
-    <nut-cell icon="my" title="Logout" @click="onLogout">
-      <template #icon>
-        <nut-icon name="my" class="mr-1" />
-      </template>
-    </nut-cell>
-  </nut-cell-group>
 </template>
 
 <script setup lang="ts">
+import { onShow } from '@dcloudio/uni-app'
 import { computed } from 'vue'
 import { useUserStore } from '@/store/user'
-import avatar from '@/assets/avatar.png'
-import { removeToken, hiddenPhone } from '@packages/utils'
+import { removeToken, hiddenPhone, getToken } from '@packages/utils'
 import { logout } from '@/api'
+
+onShow(() => {
+  console.log('My Show')
+  if (!getToken()) {
+    uni.navigateTo({ url: '/pages/login/index' }) // 跳转到登录页
+    return false
+  }
+})
 
 const userStore = useUserStore()
 const userinfo = computed(() => userStore.Userinfo)
@@ -102,7 +116,6 @@ const onLogout = async () => {
 <style lang="scss" scoped>
 .avatar-info {
   padding: 0 32rpx;
-  width: 100%;
   height: 240rpx;
   background: $primary-color;
 }
@@ -130,9 +143,6 @@ const onLogout = async () => {
 }
 
 .nav-menu {
-  margin: 24rpx;
-  :deep(.van-cell__left-icon) {
-    margin-right: 12rpx;
-  }
+  margin: 24rpx !important;
 }
 </style>

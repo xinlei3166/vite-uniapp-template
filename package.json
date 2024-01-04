@@ -52,8 +52,7 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
-    "build:github": "vite build --mode github",
-    "serve:github": "vite preview --host --mode github",
+    "build:github": "pnpm build:h5 --mode github",
     "deploy": "zsh scripts/gh-pages.sh"
   },
   "dependencies": {
