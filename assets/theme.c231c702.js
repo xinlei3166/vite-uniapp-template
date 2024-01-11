@@ -1,4 +1,4 @@
-import{r as t}from"./index-9ea87e0d.js";
+import{r as t}from"./index-ff6f2602.js";
 /**!
 * Sortable 1.15.0
 * @author	RubaXa   <trash@rubaxa.org>
