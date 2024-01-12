@@ -4,7 +4,7 @@
 
 ## Framework packages
 
-Vite4 + Vue3 + Pinia + TypeScript + NutUI
+Vite4 + Vue3 + Pinia + TypeScript + UnoCSS + NutUI + Uniapp
 
 ## Package Manager
 pnpm
