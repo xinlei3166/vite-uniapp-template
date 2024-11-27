@@ -41,15 +41,15 @@ export default ({ mode, command }) => {
       }
     },
     css: {
-      postcss: {
-        plugins: [
-          require('@unocss/postcss')({}),
-          require('autoprefixer')({
-            overrideBrowserslist: ['Android >= 4', 'ios >= 8'],
-            remove: process.env.UNI_PLATFORM !== 'h5'
-          })
-        ]
-      },
+      // postcss: {
+      //   plugins: [
+      //     require('@unocss/postcss')({}),
+      //     require('autoprefixer')({
+      //       overrideBrowserslist: ['Android >= 4', 'ios >= 8'],
+      //       remove: process.env.UNI_PLATFORM !== 'h5'
+      //     })
+      //   ]
+      // },
       preprocessorOptions: {
         scss: {
           javascriptEnabled: true,
