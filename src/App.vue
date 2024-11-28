@@ -28,5 +28,7 @@ onHide(() => {
 })
 </script>
 <style lang="scss">
+@import 'https://at.alicdn.com/t/c/font_4762589_0jkl3aestqnh.css';
+//@import '~@/static/iconfont/iconfont.css';
 @import 'nutui-uniapp/styles/index';
 </style>
