@@ -74,10 +74,16 @@ const segmentedState = reactive({
   onClickItem: (e: Record<string, any>) => {
     if (segmentedState.current !== e.currentIndex) {
       // const dv = e.currentIndex - segmentedState.current
+      const systemInfoSync = uni && uni.getSystemInfoSync()
+      const uniPlatform = systemInfoSync && systemInfoSync.uniPlatform
       segmentedState.current = e.currentIndex
+      if (!uniTransitionState.ref) return
       uniTransitionState.ref.step(
         {
-          translate3d: `${100 * segmentedState.current * -1}%, 0, 0`
+          translateX:
+            uniPlatform === 'mp-weixin'
+              ? `${100 * segmentedState.current * -1}%`
+              : `${100 * segmentedState.current * -1}%, 0, 0`
         },
         {
           timingFunction: 'ease',

@@ -4,7 +4,13 @@
     <view class="uni-form-custom" style="padding: 20rpx 24rpx">
       <uni-easyinput v-model="name" class="form-item-input" placeholder="请输入用户名">
         <template #right>
-          <button style="margin-left: 8rpx" size="mini" type="primary" @click="onSubmit">
+          <button
+            class="bg-primary!"
+            style="margin-left: 8rpx"
+            size="mini"
+            type="primary"
+            @click="onSubmit"
+          >
             提交
           </button>
         </template>

@@ -1,12 +1,13 @@
 <template>
-  <uni-search-bar
-    v-model="search.keyword"
-    style="margin-bottom: 24rpx; padding: 20rpx 32rpx; background: #fff"
-    radius="100"
-    placeholder="请输入搜索关键词"
-    cancel-button="none"
-    @confirm="onSearch"
-  />
+  <view class="search-bar" style="background: #fff; margin-bottom: 24rpx">
+    <uni-search-bar
+      v-model="search.keyword"
+      radius="100"
+      placeholder="请输入搜索关键词"
+      cancel-button="none"
+      @confirm="onSearch"
+    />
+  </view>
   <view class="list flex flex-col">
     <view v-for="(item, index) in data" :key="index" class="list-item flex items-center">
       <view class="list-item-left flex-shrink-0">

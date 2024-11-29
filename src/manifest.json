@@ -50,6 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
+        "libVersion": "v1",
         "appid" : "",
         "setting" : {
             "urlCheck" : false
@@ -65,7 +66,7 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
+    "uniStatistics": {
         "enable": false
     },
     "vueVersion" : "3"

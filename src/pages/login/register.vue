@@ -1,107 +1,113 @@
 <template>
   <view class="register">
     <view class="register-title">注册账号</view>
-    <uni-forms
-      ref="formRef"
-      :label-width="80"
-      :model-value="form"
-      class="login-form uni-form-custom"
-    >
-      <uni-forms-item
-        label="账号"
-        required
-        name="account"
-        :rules="[{ required: true, errorMessage: '请输入账号' }]"
-      >
-        <uni-easyinput v-model="form.account" class="form-item-input" placeholder="请输入账号" />
-      </uni-forms-item>
-      <uni-forms-item
-        label="手机号"
-        required
-        name="phone"
-        :rules="[
-          { required: true, errorMessage: '请输入手机号' },
-          {
-            validateFunction: (rule, value, data, callback) => {
-              if (!validatePhone(value)) {
-                callback('手机号格式不正确')
-              }
-              return true
-            }
-          }
-        ]"
-      >
-        <uni-easyinput
-          v-model="form.phone"
-          type="number"
-          class="form-item-input"
-          placeholder="请输入手机号"
-        />
-      </uni-forms-item>
-      <uni-forms-item label="验证码" name="code">
-        <uni-easyinput
-          v-model="form.code"
-          type="number"
-          class="form-item-input"
-          placeholder="请输入验证码"
+    <view class="login-form uni-form-custom">
+      <uni-forms ref="formRef" :label-width="80" :model-value="form">
+        <uni-forms-item
+          label="账号"
+          required
+          name="account"
+          :rules="[{ required: true, errorMessage: '请输入账号' }]"
         >
-          <template #right>
-            <button
-              v-if="countdown === 0"
-              style="border-radius: 0; margin-left: 8rpx"
-              :disabled="!validatePhone(form.phone)"
-              size="mini"
-              type="primary"
-              @click="onSendCode"
-            >
-              发送验证码
-            </button>
-            <button v-else style="border-radius: 0; margin-left: 8rpx" disabled size="mini">
-              {{ countdown }}s后重试
-            </button>
-          </template>
-        </uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item
-        label="密码"
-        required
-        name="password1"
-        :rules="[{ required: true, errorMessage: '请输入密码' }]"
-      >
-        <uni-easyinput
-          v-model="form.password1"
-          class="form-item-input"
-          type="password"
-          placeholder="请输入密码"
-        />
-      </uni-forms-item>
-      <uni-forms-item
-        label="确认密码"
-        required
-        name="password2"
-        :rules="[
-          { required: true, errorMessage: '请再次输入密码' },
-          {
-            validateFunction: (rule, value, data, callback) => {
-              if (!validateTwoPassword(value)) {
-                callback('两次密码输入不一致')
+          <uni-easyinput v-model="form.account" class="form-item-input" placeholder="请输入账号" />
+        </uni-forms-item>
+        <uni-forms-item
+          label="手机号"
+          required
+          name="phone"
+          :rules="[
+            { required: true, errorMessage: '请输入手机号' },
+            {
+              validateFunction: (rule, value, data, callback) => {
+                if (!validatePhone(value)) {
+                  callback('手机号格式不正确')
+                }
+                return true
               }
-              return true
             }
-          }
-        ]"
-      >
-        <uni-easyinput
-          v-model="form.password2"
-          class="form-item-input"
-          type="password"
-          placeholder="请再次输入密码"
-        />
-      </uni-forms-item>
-      <view class="uni-form-btn-wrap">
-        <button class="uni-form-btn" block type="primary" @click="onSubmit">注册</button>
-      </view>
-    </uni-forms>
+          ]"
+        >
+          <uni-easyinput
+            v-model="form.phone"
+            type="number"
+            class="form-item-input"
+            placeholder="请输入手机号"
+          />
+        </uni-forms-item>
+        <uni-forms-item label="验证码" name="code">
+          <uni-easyinput
+            v-model="form.code"
+            type="number"
+            class="form-item-input"
+            placeholder="请输入验证码"
+          >
+            <template #right>
+              <button
+                v-if="countdown === 0"
+                :class="[
+                  'form-item-code-button',
+                  { 'form-item-code-button-disabled': !validatePhone(form.phone) }
+                ]"
+                style="border-radius: 0; margin-left: 8rpx; vertical-align: text-bottom"
+                :disabled="!validatePhone(form.phone)"
+                size="mini"
+                type="primary"
+                @click="onSendCode"
+              >
+                发送验证码
+              </button>
+              <button
+                v-else
+                style="border-radius: 0; margin-left: 8rpx; vertical-align: text-bottom"
+                disabled
+                size="mini"
+              >
+                {{ countdown }}s后重试
+              </button>
+            </template>
+          </uni-easyinput>
+        </uni-forms-item>
+        <uni-forms-item
+          label="密码"
+          required
+          name="password1"
+          :rules="[{ required: true, errorMessage: '请输入密码' }]"
+        >
+          <uni-easyinput
+            v-model="form.password1"
+            class="form-item-input"
+            type="password"
+            placeholder="请输入密码"
+          />
+        </uni-forms-item>
+        <uni-forms-item
+          label="确认密码"
+          required
+          name="password2"
+          :rules="[
+            { required: true, errorMessage: '请再次输入密码' },
+            {
+              validateFunction: (rule, value, data, callback) => {
+                if (!validateTwoPassword(value)) {
+                  callback('两次密码输入不一致')
+                }
+                return true
+              }
+            }
+          ]"
+        >
+          <uni-easyinput
+            v-model="form.password2"
+            class="form-item-input"
+            type="password"
+            placeholder="请再次输入密码"
+          />
+        </uni-forms-item>
+        <view class="uni-form-btn-wrap">
+          <button class="uni-form-btn" block type="primary" @click="onSubmit">注册</button>
+        </view>
+      </uni-forms>
+    </view>
     <view class="tip-btn-wrap">
       <text>
         已有账号？
@@ -196,6 +202,13 @@ const onLogin = () => {
   &:not(:nth-last-of-type(1)) {
     margin-bottom: 32rpx !important;
   }
+}
+
+.form-item-code-button {
+  &.form-item-code-button-disabled {
+    background-color: fade-out($uni-color-primary, 0.4) !important;
+  }
+  background-color: $primary-color !important;
 }
 
 .btn-wrap {

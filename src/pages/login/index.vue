@@ -1,32 +1,35 @@
 <template>
   <view class="login">
     <view class="login-title">登录账号</view>
-    <uni-forms ref="formRef" :model-value="form" class="login-form uni-form-custom">
-      <uni-forms-item
-        label="账号"
-        required
-        name="account"
-        :rules="[{ required: true, errorMessage: '请输入账号' }]"
-      >
-        <uni-easyinput v-model="form.account" class="form-item-input" placeholder="请输入账号" />
-      </uni-forms-item>
-      <uni-forms-item
-        label="密码"
-        required
-        name="password"
-        :rules="[{ required: true, errorMessage: '请输入密码' }]"
-      >
-        <uni-easyinput
-          v-model="form.password"
-          class="form-item-input"
-          type="password"
-          placeholder="请输入密码"
-        />
-      </uni-forms-item>
-      <view class="uni-form-btn-wrap">
-        <button class="uni-form-btn" block type="primary" @click="onSubmit">登录</button>
-      </view>
-    </uni-forms>
+    <view class="login-form uni-form-custom">
+      <uni-forms ref="formRef" :model-value="form">
+        <uni-forms-item
+          label="账号"
+          required
+          name="account"
+          :rules="[{ required: true, errorMessage: '请输入账号' }]"
+        >
+          <uni-easyinput v-model="form.account" class="form-item-input" placeholder="请输入账号" />
+        </uni-forms-item>
+        <uni-forms-item
+          label="密码"
+          required
+          name="password"
+          :rules="[{ required: true, errorMessage: '请输入密码' }]"
+        >
+          <uni-easyinput
+            v-model="form.password"
+            class="form-item-input"
+            type="password"
+            placeholder="请输入密码"
+          />
+        </uni-forms-item>
+        <view class="uni-form-btn-wrap">
+          <button class="uni-form-btn" block type="primary" @click="onSubmit">登录</button>
+        </view>
+      </uni-forms>
+    </view>
+
     <view class="tip-btn-wrap">
       <text>
         没有账号？

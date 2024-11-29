@@ -16,109 +16,115 @@
         <view class="iconfont icon-right text-5 text-white ml-auto"></view>
       </view>
     </view>
-    <uni-list class="nav-menu" style="margin: 24rpx">
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-home'
-        }"
-        title="Router"
-        clickable
-        @click="onClickMenu('/pages/components/router/index')"
-      />
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-edit'
-        }"
-        title="Store"
-        clickable
-        @click="onClickMenu('/pages/components/store/index')"
-      />
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-star'
-        }"
-        title="Provide"
-        clickable
-        @click="onClickMenu('/pages/components/provide/index')"
-      />
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-check-circle'
-        }"
-        title="Bus"
-        clickable
-        @click="onClickMenu('/pages/components/bus/index')"
-      />
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-calendar'
-        }"
-        title="Table"
-        clickable
-        @click="onClickMenu('/pages/components/table/index')"
-      />
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-appstore'
-        }"
-        title="Sortable"
-        clickable
-        @click="onClickMenu('/pages/components/sortable/index')"
-      />
-    </uni-list>
-    <uni-list class="nav-menu" style="margin: 24rpx">
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-setting'
-        }"
-        show-arrow
-        title="Security Settings"
-      />
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-message'
-        }"
-        show-arrow
-        title="Notification Settings"
-      />
-    </uni-list>
-    <uni-list class="nav-menu" style="margin: 24rpx">
-      <uni-list-item
-        :show-extra-icon="true"
-        :extra-icon="{
-          customPrefix: 'iconfont',
-          size: '16',
-          type: 'icon-logout'
-        }"
-        title="Logout"
-        clickable
-        @click="onLogout"
-      />
-    </uni-list>
+    <view style="margin: 24rpx">
+      <uni-list>
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-home'
+          }"
+          title="Router"
+          clickable
+          @click="onClickMenu('/pages/components/router/index')"
+        />
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-edit'
+          }"
+          title="Store"
+          clickable
+          @click="onClickMenu('/pages/components/store/index')"
+        />
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-star'
+          }"
+          title="Provide"
+          clickable
+          @click="onClickMenu('/pages/components/provide/index')"
+        />
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-check-circle'
+          }"
+          title="Bus"
+          clickable
+          @click="onClickMenu('/pages/components/bus/index')"
+        />
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-calendar'
+          }"
+          title="Table"
+          clickable
+          @click="onClickMenu('/pages/components/table/index')"
+        />
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-appstore'
+          }"
+          title="Sortable"
+          clickable
+          @click="onClickMenu('/pages/components/sortable/index')"
+        />
+      </uni-list>
+    </view>
+    <view style="margin: 24rpx">
+      <uni-list>
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-setting'
+          }"
+          show-arrow
+          title="Security Settings"
+        />
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-message'
+          }"
+          show-arrow
+          title="Notification Settings"
+        />
+      </uni-list>
+    </view>
+    <view style="margin: 24rpx">
+      <uni-list>
+        <uni-list-item
+          :show-extra-icon="true"
+          :extra-icon="{
+            customPrefix: 'iconfont',
+            size: '16',
+            type: 'icon-logout'
+          }"
+          title="Logout"
+          clickable
+          @click="onLogout"
+        />
+      </uni-list>
+    </view>
   </view>
 </template>
 
@@ -181,9 +187,5 @@ const onLogout = async () => {
     line-height: 36rpx;
     color: #dcdee0;
   }
-}
-
-.nav-menu {
-  margin: 24rpx !important;
 }
 </style>

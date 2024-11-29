@@ -86,7 +86,7 @@ export default ({ mode, command }) => {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.mjs', '.vue', '.json', '.less', '.scss', '.css']
     },
     esbuild: {
-      drop: command === 'build' ? ['console', 'debugger'] : []
+      drop: mode === 'production' && command === 'build' ? ['console', 'debugger'] : []
     },
     server: {
       proxy: {
