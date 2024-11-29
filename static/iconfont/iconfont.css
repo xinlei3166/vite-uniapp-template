@@ -1,0 +1,115 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4762589 */
+  src: url('iconfont.woff2?t=1732830833674') format('woff2'),
+       url('iconfont.woff?t=1732830833674') format('woff'),
+       url('iconfont.ttf?t=1732830833674') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-logout:before {
+  content: "\e78c";
+}
+
+.icon-table:before {
+  content: "\e7e0";
+}
+
+.icon-login:before {
+  content: "\e8ef";
+}
+
+.icon-right:before {
+  content: "\e7eb";
+}
+
+.icon-left:before {
+  content: "\e7ec";
+}
+
+.icon-up:before {
+  content: "\e7ed";
+}
+
+.icon-down:before {
+  content: "\e7ee";
+}
+
+.icon-check-circle:before {
+  content: "\e77d";
+}
+
+.icon-compass:before {
+  content: "\e77e";
+}
+
+.icon-time-circle:before {
+  content: "\e784";
+}
+
+.icon-reloadtime:before {
+  content: "\e789";
+}
+
+.icon-message:before {
+  content: "\e78a";
+}
+
+.icon-dashboard:before {
+  content: "\e78b";
+}
+
+.icon-setting:before {
+  content: "\e78e";
+}
+
+.icon-location:before {
+  content: "\e790";
+}
+
+.icon-edit-square:before {
+  content: "\e791";
+}
+
+.icon-appstore:before {
+  content: "\e792";
+}
+
+.icon-user:before {
+  content: "\e7ae";
+}
+
+.icon-home:before {
+  content: "\e7c6";
+}
+
+.icon-calendar:before {
+  content: "\e7d3";
+}
+
+.icon-fund:before {
+  content: "\e7de";
+}
+
+.icon-star:before {
+  content: "\e7df";
+}
+
+.icon-edit:before {
+  content: "\e7e1";
+}
+
+.icon-comment:before {
+  content: "\e8e8";
+}
+
+.icon-send:before {
+  content: "\e916";
+}
+
