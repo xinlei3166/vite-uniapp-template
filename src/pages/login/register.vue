@@ -1,83 +1,107 @@
 <template>
   <view class="register">
     <view class="register-title">注册账号</view>
-    <nut-form ref="formRef" :model-value="form" custom-class="register-form nut-form-custom">
-      <nut-form-item
+    <uni-forms
+      ref="formRef"
+      :label-width="80"
+      :model-value="form"
+      class="login-form uni-form-custom"
+    >
+      <uni-forms-item
         label="账号"
-        prop="account"
-        :rules="[{ required: true, message: '请输入账号' }]"
+        required
+        name="account"
+        :rules="[{ required: true, errorMessage: '请输入账号' }]"
       >
-        <nut-input
-          v-model="form.account"
-          placeholder="请输入账号"
-          @blur="onBlurValidate('account')"
-        />
-      </nut-form-item>
-      <nut-form-item
+        <uni-easyinput v-model="form.account" class="form-item-input" placeholder="请输入账号" />
+      </uni-forms-item>
+      <uni-forms-item
         label="手机号"
-        prop="phone"
+        required
+        name="phone"
         :rules="[
-          { required: true, message: '请输入手机号' },
-          { validator: validatePhone, message: '手机号格式不正确' }
+          { required: true, errorMessage: '请输入手机号' },
+          {
+            validateFunction: (rule, value, data, callback) => {
+              if (!validatePhone(value)) {
+                callback('手机号格式不正确')
+              }
+              return true
+            }
+          }
         ]"
       >
-        <nut-input
+        <uni-easyinput
           v-model="form.phone"
           type="number"
+          class="form-item-input"
           placeholder="请输入手机号"
-          @blur="onBlurValidate('phone')"
         />
-      </nut-form-item>
-      <nut-form-item label="验证码" prop="code">
-        <nut-input v-model="form.code" type="number" name="code" placeholder="请输入验证码">
+      </uni-forms-item>
+      <uni-forms-item label="验证码" name="code">
+        <uni-easyinput
+          v-model="form.code"
+          type="number"
+          class="form-item-input"
+          placeholder="请输入验证码"
+        >
           <template #right>
-            <nut-button
+            <button
               v-if="countdown === 0"
+              style="border-radius: 0; margin-left: 8rpx"
               :disabled="!validatePhone(form.phone)"
-              size="small"
+              size="mini"
               type="primary"
-              shape="square"
               @click="onSendCode"
             >
               发送验证码
-            </nut-button>
-            <nut-button v-else disabled size="small" shape="square">
+            </button>
+            <button v-else style="border-radius: 0; margin-left: 8rpx" disabled size="mini">
               {{ countdown }}s后重试
-            </nut-button>
+            </button>
           </template>
-        </nut-input>
-      </nut-form-item>
-      <nut-form-item
+        </uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item
         label="密码"
-        prop="password1"
-        :rules="[{ required: true, message: '请输入密码' }]"
+        required
+        name="password1"
+        :rules="[{ required: true, errorMessage: '请输入密码' }]"
       >
-        <nut-input
+        <uni-easyinput
           v-model="form.password1"
+          class="form-item-input"
           type="password"
           placeholder="请输入密码"
-          @blur="onBlurValidate('password1')"
         />
-      </nut-form-item>
-      <nut-form-item
+      </uni-forms-item>
+      <uni-forms-item
         label="确认密码"
-        prop="password2"
+        required
+        name="password2"
         :rules="[
-          { required: true, message: '请再次输入密码' },
-          { validator: validateTwoPassword, message: '两次密码输入不一致' }
+          { required: true, errorMessage: '请再次输入密码' },
+          {
+            validateFunction: (rule, value, data, callback) => {
+              if (!validateTwoPassword(value)) {
+                callback('两次密码输入不一致')
+              }
+              return true
+            }
+          }
         ]"
       >
-        <nut-input
+        <uni-easyinput
           v-model="form.password2"
+          class="form-item-input"
           type="password"
           placeholder="请再次输入密码"
-          @blur="onBlurValidate('password2')"
         />
-      </nut-form-item>
-      <view class="nut-form-btn-wrap">
-        <nut-button custom-class="nut-form-btn" block type="primary" @click="onSubmit">注册</nut-button>
+      </uni-forms-item>
+      <view class="uni-form-btn-wrap">
+        <button class="uni-form-btn" block type="primary" @click="onSubmit">注册</button>
       </view>
-    </nut-form>
+    </uni-forms>
     <view class="tip-btn-wrap">
       <text>
         已有账号？
@@ -124,8 +148,7 @@ const onBlurValidate = (prop: string) => {
 }
 
 const onSubmit = async (values: Record<string, any>) => {
-  formRef.value.validate().then(async ({ valid, errors }: any) => {
-    if (!valid) return
+  formRef.value.validate().then(async () => {
     if (!form.code) {
       uni.showToast({ title: '请输入验证码' })
       return

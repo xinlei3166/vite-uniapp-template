@@ -1,16 +1,17 @@
 <template>
-  <nut-searchbar
+  <uni-search-bar
     v-model="search.keyword"
-    custom-class="search"
-    custom-style="margin-bottom: 24rpx;"
-    shape="round"
+    style="margin-bottom: 24rpx; padding: 20rpx 32rpx; background: #fff"
+    radius="100"
     placeholder="请输入搜索关键词"
-  ></nut-searchbar>
+    cancel-button="none"
+    @confirm="onSearch"
+  />
   <view class="list flex flex-col">
     <view v-for="(item, index) in data" :key="index" class="list-item flex items-center">
       <view class="list-item-left flex-shrink-0">
         <view class="icon-wrap">
-          <nut-icon custom-class="icon" size="28" custom-color="#fff" name="star-n" />
+          <view class="iconfont icon icon-star"></view>
         </view>
       </view>
       <view class="list-item-right flex flex-1 flex-col justify-between">
@@ -31,6 +32,9 @@ const data = Array.from({ length: 20 })
 const search = reactive<Record<string, any>>({
   keyword: ''
 })
+const onSearch = (e: Record<string, any>): void => {
+  console.log(e.value)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +67,7 @@ const search = reactive<Record<string, any>>({
     background: #60a5fa;
   }
   .icon {
-    font-size: 56rpx;
+    font-size: 64rpx;
     color: #fff;
   }
 }

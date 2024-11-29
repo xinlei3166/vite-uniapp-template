@@ -1,11 +1,15 @@
 <template>
   <view class="components-card card">
     <view class="title">Store</view>
-    <nut-input v-model="name" clearable placeholder="请输入用户名">
-      <template #right>
-        <nut-button size="small" shape="square" type="primary" @click="onSubmit">提交</nut-button>
-      </template>
-    </nut-input>
+    <view class="uni-form-custom" style="padding: 20rpx 24rpx">
+      <uni-easyinput v-model="name" class="form-item-input" placeholder="请输入用户名">
+        <template #right>
+          <button style="margin-left: 8rpx" size="mini" type="primary" @click="onSubmit">
+            提交
+          </button>
+        </template>
+      </uni-easyinput>
+    </view>
     <view class="title">当前用户：{{ userinfo.userName }}</view>
   </view>
 </template>

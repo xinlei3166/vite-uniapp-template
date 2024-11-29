@@ -1,6 +1,17 @@
 <template>
   <view class="table-card">
-    <nut-table :columns="columns" :data="data"></nut-table>
+    <uni-table ref="table" :loading="loading" border empty-text="暂无更多数据">
+      <uni-tr>
+        <uni-th width="100">ID</uni-th>
+        <uni-th width="100">姓名</uni-th>
+        <uni-th width="100">邮箱</uni-th>
+      </uni-tr>
+      <uni-tr v-for="item in data" :key="item.id">
+        <uni-td>{{ item.id }}</uni-td>
+        <uni-td>{{ item.name }}</uni-td>
+        <uni-td>{{ item.email }}</uni-td>
+      </uni-tr>
+    </uni-table>
   </view>
 </template>
 
@@ -20,25 +31,6 @@ onBeforeMount(async () => {
   await init()
 })
 
-const columns = [
-  {
-    title: 'ID',
-    key: 'id'
-    // stylehead: 'font-size:20px;color:red;font-weight:bolder;',
-    // stylecolumn: 'font-size:10px;color:blue;'
-  },
-  {
-    title: '姓名',
-    key: 'name',
-    render: (record: Record<string, any>) => {
-      return h('text', {}, record.name)
-    }
-  },
-  {
-    title: '邮箱',
-    key: 'email'
-  }
-]
 const search = reactive<Record<string, any>>({
   name1: undefined
 })

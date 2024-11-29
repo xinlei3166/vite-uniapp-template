@@ -8,9 +8,30 @@
         <view class="list-item-title">这是一个{{ tab }}的标题</view>
         <view class="list-item-desc">这是一段描述</view>
         <view>
-          <nut-tag custom-color="#969799" class="list-item-tag" plain round>标签</nut-tag>
-          <nut-tag custom-color="#969799" class="list-item-tag" plain round>标签</nut-tag>
-          <nut-tag custom-color="#969799" class="list-item-tag" plain round>标签</nut-tag>
+          <uni-tag
+            :inverted="true"
+            :circle="true"
+            size="mini"
+            class="list-item-tag"
+            text="标签"
+            custom-style="background-color: transparent; border-color: #969799; color: #969799;font-weight: 400;"
+          />
+          <uni-tag
+            :inverted="true"
+            :circle="true"
+            size="mini"
+            class="list-item-tag"
+            text="标签"
+            custom-style="background-color: transparent; border-color: #969799; color: #969799;font-weight: 400;"
+          />
+          <uni-tag
+            :inverted="true"
+            :circle="true"
+            size="mini"
+            class="list-item-tag"
+            text="标签"
+            custom-style="background-color: transparent; border-color: #969799; color: #969799;font-weight: 400;"
+          />
         </view>
         <view>
           <text class="list-item-price">0.3万/月</text>

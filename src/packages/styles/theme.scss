@@ -1,41 +1,39 @@
-@import "nutui-uniapp/styles/variables.scss";
-
 :root, page {
-  --nut-primary-color: #0077FA;
-  --nut-primary-color-end: #2997ff;
-  --nut-success-color: #26BF26;
-  --nut-danger-color: #FA2C19;
-  --nut-warning-color: #FF9E0D;
-  --nut-title-color: #1a1a1a;
-  --nut-title-color2: #666666;
-  --nut-text-color: #808080;
-  --nut-text-color-1: #323233;
-  --nut-text-color-2: #969799;
-  --nut-text-color-3: #c8c9cc;
-  --nut-border-color: #ebedf0;
-  --nut-active-color: #f2f3f5;
-  --nut-help-color: #f5f5f5;
-  --nut-disable-color: #cccccc;
-  --nut-required-color: #fa2c19
+  --nui-primary-color: #0077FA;
+  --nui-primary-color-end: #2997ff;
+  --nui-success-color: #26BF26;
+  --nui-danger-color: #FA2C19;
+  --nui-warning-color: #FF9E0D;
+  --nui-title-color: #1a1a1a;
+  --nui-title-color2: #666666;
+  --nui-text-color: #808080;
+  --nui-text-color-1: #323233;
+  --nui-text-color-2: #969799;
+  --nui-text-color-3: #c8c9cc;
+  --nui-border-color: #ebedf0;
+  --nui-active-color: #f2f3f5;
+  --nui-help-color: #f5f5f5;
+  --nui-disable-color: #cccccc;
+  --nui-required-color: #fa2c19
 }
 
 // scss vars
 $bg-color: #f5f5f5;
-$primary-color: var(--nut-primary-color);
-$primary-color-end: var(--nut-primary-color-end);
-$success-color: var(--nut-success-color);
-$danger-color: var(--nut-danger-color);
-$warning-color: var(--nut-warning-color);
-$title-color: var(--nut-title-color);
-$title-color2: var(--nut-title-color2);
-$text-color: var(--nut-text-color);
-$text-color-1: var(--nut-text-color-1);
-$text-color-2: var(--nut-text-color-2);
-$text-color-3: var(--nut-text-color-3);
-$border-color: var(--nut-border-color);
-$active-color: var(--nut-active-color);
+$primary-color: var(--nui-primary-color);
+$primary-color-end: var(--nui-primary-color-end);
+$success-color: var(--nui-success-color);
+$danger-color: var(--nui-danger-color);
+$warning-color: var(--nui-warning-color);
+$title-color: var(--nui-title-color);
+$title-color2: var(--nui-title-color2);
+$text-color: var(--nui-text-color);
+$text-color-1: var(--nui-text-color-1);
+$text-color-2: var(--nui-text-color-2);
+$text-color-3: var(--nui-text-color-3);
+$border-color: var(--nui-border-color);
+$active-color: var(--nui-active-color);
 $active-opacity: 0.6;
 $disabled-opacity: 0.5;
-$help-color: var(--nut-help-color);
-$disable-color: var(--nut-disable-color);
-$required-color: var(--nut-required-color);
+$help-color: var(--nui-help-color);
+$disable-color: var(--nui-disable-color);
+$required-color: var(--nui-required-color);

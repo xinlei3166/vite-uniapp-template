@@ -5,7 +5,6 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
 import Components from '@uni-helper/vite-plugin-uni-components'
-import { NutResolver } from 'nutui-uniapp'
 import path from 'path'
 
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g
@@ -63,7 +62,7 @@ export default ({ mode, command }) => {
         dts: false
       }),
       Components({
-        resolvers: [NutResolver()]
+        resolvers: []
       }),
       UnoCSS(),
       uni(),

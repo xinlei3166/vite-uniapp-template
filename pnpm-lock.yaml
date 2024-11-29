@@ -110,9 +110,6 @@ dependencies:
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
-  nutui-uniapp:
-    specifier: ^1.8.1
-    version: 1.8.1(@uni-helper/uni-app-types@1.0.0-alpha.6)(vue@3.4.38)
   object-inspect:
     specifier: ^1.13.3
     version: 1.13.3
@@ -3944,17 +3941,6 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
-
-  /@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.7.2)(vue@3.4.38):
-    resolution: {integrity: sha512-t9AKDYBmDaz4IW0fgtBt25ubEzf7kyUeMlHaBaG5nyNGd6pVuDpYkABhsnNPDiZcaHAoN6SbX1SQQx5axDOWbA==}
-    engines: {node: '>=14.18'}
-    peerDependencies:
-      typescript: ^5.0.0
-      vue: ^3.0.0
-    dependencies:
-      typescript: 5.7.2
-      vue: 3.4.38(typescript@5.7.2)
-    dev: false
 
   /@uni-helper/vite-plugin-uni-components@0.2.0:
     resolution: {integrity: sha512-h/rV8Z3N+wus/ZviYzkdRePNSUlkndn5H+wVC17ZXmG+2mqmUfLJdGskzrCbgE7Y1TT7u8E9yMz8Ah/RwMf0GQ==}
@@ -8509,16 +8495,6 @@ packages:
     dependencies:
       boolbase: 1.0.0
     dev: true
-
-  /nutui-uniapp@1.8.1(@uni-helper/uni-app-types@1.0.0-alpha.6)(vue@3.4.38):
-    resolution: {integrity: sha512-+bvotOYKLot5OyUloHzBOgdXxuxMnMoBzcGXt4/Tj3ckIO5UwosOdYcK9fZdNlbhS8NcqEHZaSOAwstCV3otuQ==}
-    peerDependencies:
-      '@uni-helper/uni-app-types': ^1.0.0-alpha.4
-      vue: '>=3.2.0'
-    dependencies:
-      '@uni-helper/uni-app-types': 1.0.0-alpha.6(typescript@5.7.2)(vue@3.4.38)
-      vue: 3.4.38(typescript@5.7.2)
-    dev: false
 
   /nwsapi@2.2.7:
     resolution: {integrity: sha512-ub5E4+FBPKwAZx0UwIQOjYWGHTEq5sPqHQNRN8Z9e4A7u3Tj1weLJsL59yH9vmvqEtBHaOmT6cYQKIZOxp35FQ==}

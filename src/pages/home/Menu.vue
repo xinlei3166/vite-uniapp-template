@@ -5,7 +5,7 @@
       @click="onClickMenu('/pages/components/store/index')"
     >
       <view class="icon-wrap order1">
-        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="edit" />
+        <view class="iconfont icon icon-edit"></view>
       </view>
       <text class="text">Store</text>
     </view>
@@ -14,7 +14,7 @@
       @click="onClickMenu('/pages/components/provide/index')"
     >
       <view class="icon-wrap order3">
-        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="star-n" />
+        <view class="iconfont icon icon-star"></view>
       </view>
       <text class="text">Provide</text>
     </view>
@@ -23,7 +23,7 @@
       @click="onClickMenu('/pages/components/bus/index')"
     >
       <view class="icon-wrap order2">
-        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="success" />
+        <view class="iconfont icon icon-check-circle"></view>
       </view>
       <text class="text">Bus</text>
     </view>
@@ -32,7 +32,7 @@
       @click="onClickMenu('/pages/components/table/index')"
     >
       <view class="icon-wrap order4">
-        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="date" />
+        <view class="iconfont icon icon-calendar"></view>
       </view>
       <text class="text">Table</text>
     </view>
@@ -41,7 +41,7 @@
       @click="onClickMenu('/pages/components/sortable/index')"
     >
       <view class="icon-wrap order5">
-        <nut-icon custom-class="icon" size="21" custom-color="#fff" name="category" />
+        <view class="iconfont icon icon-appstore"></view>
       </view>
       <text class="text">Sortable</text>
     </view>
@@ -92,7 +92,7 @@ const onClickMenu = (path: string) => {
     height: 80rpx;
   }
   .icon {
-    font-size: 42rpx !important;
+    font-size: 52rpx !important;
     color: #fff !important;
   }
   .text {

@@ -4,7 +4,7 @@
     <view class="title">可以通过点击父组件中的增加按钮，观察B组件的结果显示</view>
     <view class="title">父组件</view>
     <view class="title">当前结果：{{ number }}</view>
-    <nut-button type="primary" shape="square" size="small" block @click="onAdd">增加</nut-button>
+    <button class="uni-btn-custom" type="primary" @click="onAdd">增加</button>
     <view class="title">----------------------------------------</view>
     <Child />
   </view>

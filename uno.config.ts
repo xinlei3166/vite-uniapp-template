@@ -46,19 +46,19 @@ export default defineConfig({
   // rules: [[/^opacity-(active|disabled)$/, ([, d]) => ({ opacity: `var(--van-${d}-opacity)` })]],
   theme: {
     colors: {
-      primary: 'var(--nut-primary-color)', // class="bg-primary"
-      primaryEnd: 'var(--nut-primary-color-end)', // class="bg-primaryEnd"
-      success: 'var(--nut-success-color)',
-      danger: 'var(--nut-danger-color)',
-      warning: 'var(-nut-warning-color)',
-      text: 'var(--nut-title-color)',
-      text2: 'var(--nut-title-color2)',
-      text3: 'var(--nut-text-color)',
-      border: 'var(--nut-border-color)',
-      active: 'var(--nut-active-color)',
-      help: 'var(--nut-help-color)',
-      disable: 'var(--nut-disable-color)',
-      required: 'var(--nut-required-color)'
+      primary: 'var(--nui-primary-color)', // class="bg-primary"
+      primaryEnd: 'var(--nui-primary-color-end)', // class="bg-primaryEnd"
+      success: 'var(--nui-success-color)',
+      danger: 'var(--nui-danger-color)',
+      warning: 'var(--nui-warning-color)',
+      text: 'var(--nui-title-color)',
+      text2: 'var(--nui-title-color2)',
+      text3: 'var(--nui-text-color)',
+      border: 'var(--nui-border-color)',
+      active: 'var(--nui-active-color)',
+      help: 'var(--nui-help-color)',
+      disable: 'var(--nui-disable-color)',
+      required: 'var(--nui-required-color)'
     }
   }
 })

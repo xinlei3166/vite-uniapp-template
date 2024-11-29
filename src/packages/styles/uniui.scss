@@ -1,0 +1,42 @@
+.uni-form-custom {
+  .uni-forms-item {
+    background: #fff;
+    padding: 10rpx 32rpx;
+    margin: 0 32rpx;
+    border-radius: 16rpx !important;
+  }
+  .uni-forms-item__error {
+    padding-left: 16rpx !important;
+    padding-top: 20rpx !important;
+  }
+  .uni-forms-item .is-required {
+    font-weight: normal !important;
+    margin-right: 4px;
+  }
+  .uni-easyinput-error {
+    color: #333 !important;
+  }
+  .uni-easyinput__content {
+    border: none !important;
+  }
+  .uni-easyinput__placeholder-class {
+    color: #999 !important;
+  }
+}
+
+.uni-form-btn-wrap {
+  margin: 64rpx 32rpx 32rpx !important;
+  .uni-form-btn {
+    font-size: 28rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    border-radius: 8rpx !important;
+  }
+}
+
+.uni-btn-custom {
+  font-size: 28rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+

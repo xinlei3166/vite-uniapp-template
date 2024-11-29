@@ -1,38 +1,32 @@
 <template>
   <view class="login">
     <view class="login-title">登录账号</view>
-    <nut-form ref="formRef" :model-value="form" custom-class="login-form nut-form-custom">
-      <nut-form-item
+    <uni-forms ref="formRef" :model-value="form" class="login-form uni-form-custom">
+      <uni-forms-item
         label="账号"
-        prop="account"
-        :rules="[{ required: true, message: '请输入账号' }]"
+        required
+        name="account"
+        :rules="[{ required: true, errorMessage: '请输入账号' }]"
       >
-        <nut-input
-          v-model="form.account"
-          custom-class="form-item-input"
-          placeholder="请输入账号"
-          @blur="onBlurValidate('account')"
-        />
-      </nut-form-item>
-      <nut-form-item
+        <uni-easyinput v-model="form.account" class="form-item-input" placeholder="请输入账号" />
+      </uni-forms-item>
+      <uni-forms-item
         label="密码"
-        prop="password"
-        :rules="[{ required: true, message: '请输入密码' }]"
+        required
+        name="password"
+        :rules="[{ required: true, errorMessage: '请输入密码' }]"
       >
-        <nut-input
+        <uni-easyinput
           v-model="form.password"
-          custom-class="form-item-input"
+          class="form-item-input"
           type="password"
           placeholder="请输入密码"
-          @blur="onBlurValidate('password')"
         />
-      </nut-form-item>
-      <view class="nut-form-btn-wrap">
-        <nut-button custom-class="nut-form-btn" block type="primary" @click="onSubmit">
-          登录
-        </nut-button>
+      </uni-forms-item>
+      <view class="uni-form-btn-wrap">
+        <button class="uni-form-btn" block type="primary" @click="onSubmit">登录</button>
       </view>
-    </nut-form>
+    </uni-forms>
     <view class="tip-btn-wrap">
       <text>
         没有账号？
@@ -68,8 +62,7 @@ const onBlurValidate = (prop: string) => {
 }
 
 const onSubmit = async () => {
-  formRef.value.validate().then(async ({ valid, errors }: any) => {
-    if (!valid) return
+  formRef.value.validate().then(async () => {
     const res = await login({
       userAccount: form.account,
       password: doSM3(form.password)

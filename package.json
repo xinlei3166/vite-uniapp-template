@@ -91,7 +91,6 @@
     "mitt": "^3.0.1",
     "nanoid": "^5.0.9",
     "nprogress": "^0.2.0",
-    "nutui-uniapp": "^1.8.1",
     "object-inspect": "^1.13.3",
     "pinia": "~2.0.36",
     "pinia-plugin-persist": "^1.0.0",

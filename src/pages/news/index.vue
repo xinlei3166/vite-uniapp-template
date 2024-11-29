@@ -2,10 +2,7 @@
   <view class="list flex flex-col">
     <view v-for="(item, index) in data" :key="index" class="list-item flex">
       <view class="list-item-left flex-shrink-0">
-        <image
-          class="list-item-img"
-          src="/static/img/apple-1.jpeg"
-        />
+        <image class="list-item-img" src="/static/img/apple-1.jpeg" />
       </view>
       <view class="list-item-right flex flex-col justify-between">
         <view class="list-item-title">

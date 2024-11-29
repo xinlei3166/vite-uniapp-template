@@ -3,81 +3,122 @@
     <view class="avatar-info">
       <view class="title-setting flex items-center justify-between">
         <text>我的</text>
-        <nut-icon class="title-setting-icon" size="22" name="setting" />
+        <view class="iconfont icon-setting title-setting-icon text-6"></view>
       </view>
       <view class="flex items-center">
-        <nut-avatar
-          size="large"
-          custom-style="--nut-avatar-large-width: 100rpx; --nut-avatar-large-height: 100rpx"
-        >
-          <image src="/static/img/avatar.png" />
-        </nut-avatar>
+        <view style="width: 100rpx; height: 100rpx">
+          <image class="w-full h-full" src="/static/img/avatar.png" />
+        </view>
         <view class="username-phone">
           <view class="username">{{ userinfo.name || '君惜' }}</view>
           <view class="phone">{{ hiddenPhone(userinfo.phone) || '188******88' }}</view>
         </view>
-        <nut-icon custom-class="text-white ml-auto" name="right" size="14" />
+        <view class="iconfont icon-right text-5 text-white ml-auto"></view>
       </view>
     </view>
-    <nut-cell-group custom-class="nav-menu" custom-style="margin: 24rpx">
-      <nut-cell icon="home" title="Router" @click="onClickMenu('/pages/components/router/index')">
-        <template #icon>
-          <nut-icon name="home" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-      <nut-cell icon="edit" title="Store" @click="onClickMenu('/pages/components/store/index')">
-        <template #icon>
-          <nut-icon name="edit" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-      <nut-cell
-        icon="star-n"
+    <uni-list class="nav-menu" style="margin: 24rpx">
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-home'
+        }"
+        title="Router"
+        clickable
+        @click="onClickMenu('/pages/components/router/index')"
+      />
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-edit'
+        }"
+        title="Store"
+        clickable
+        @click="onClickMenu('/pages/components/store/index')"
+      />
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-star'
+        }"
         title="Provide"
+        clickable
         @click="onClickMenu('/pages/components/provide/index')"
-      >
-        <template #icon>
-          <nut-icon name="star-n" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-      <nut-cell icon="success" title="Bus" @click="onClickMenu('/pages/components/bus/index')">
-        <template #icon>
-          <nut-icon name="success" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-      <nut-cell icon="date" title="Table" @click="onClickMenu('/pages/components/table/index')">
-        <template #icon>
-          <nut-icon name="date" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-      <nut-cell
-        icon="category"
+      />
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-check-circle'
+        }"
+        title="Bus"
+        clickable
+        @click="onClickMenu('/pages/components/bus/index')"
+      />
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-calendar'
+        }"
+        title="Table"
+        clickable
+        @click="onClickMenu('/pages/components/table/index')"
+      />
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-appstore'
+        }"
         title="Sortable"
+        clickable
         @click="onClickMenu('/pages/components/sortable/index')"
-      >
-        <template #icon>
-          <nut-icon name="category" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group custom-class="nav-menu" custom-style="margin: 24rpx">
-      <nut-cell icon="setting" title="Security Settings" is-link>
-        <template #icon>
-          <nut-icon name="setting" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-      <nut-cell icon="message" title="Notification Settings" is-link>
-        <template #icon>
-          <nut-icon name="message" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-    </nut-cell-group>
-    <nut-cell-group custom-class="nav-menu" custom-style="margin: 24rpx">
-      <nut-cell icon="my" title="Logout" @click="onLogout">
-        <template #icon>
-          <nut-icon name="my" custom-class="mr-1" />
-        </template>
-      </nut-cell>
-    </nut-cell-group>
+      />
+    </uni-list>
+    <uni-list class="nav-menu" style="margin: 24rpx">
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-setting'
+        }"
+        show-arrow
+        title="Security Settings"
+      />
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-message'
+        }"
+        show-arrow
+        title="Notification Settings"
+      />
+    </uni-list>
+    <uni-list class="nav-menu" style="margin: 24rpx">
+      <uni-list-item
+        :show-extra-icon="true"
+        :extra-icon="{
+          customPrefix: 'iconfont',
+          size: '16',
+          type: 'icon-logout'
+        }"
+        title="Logout"
+        clickable
+        @click="onLogout"
+      />
+    </uni-list>
   </view>
 </template>
 
