@@ -79,12 +79,13 @@ const segmentedState = reactive({
       segmentedState.current = e.currentIndex
       if (!uniTransitionState.ref) return
       uniTransitionState.ref.step(
-        {
-          translateX:
-            uniPlatform === 'mp-weixin'
-              ? `${100 * segmentedState.current * -1}%`
-              : `${100 * segmentedState.current * -1}%, 0, 0`
-        },
+        uniPlatform === 'mp-weixin'
+          ? {
+              translateX: `${100 * segmentedState.current * -1}%`
+            }
+          : {
+              translate3d: `${100 * segmentedState.current * -1}%, 0, 0`
+            },
         {
           timingFunction: 'ease',
           duration: 300
