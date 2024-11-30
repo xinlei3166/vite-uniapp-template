@@ -1,11 +1,11 @@
 {
-  "name": "vue3-app",
+  "name": "vite-uniapp-template",
   "version": "1.0.0",
   "private": true,
+  "description": "vite-uniapp-template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xinlei3166/vite-uniapp-template.git",
-    "directory": "apps/vue3-app"
+    "url": "git+https://github.com/xinlei3166/vite-uniapp-template.git"
   },
   "keywords": [
     "vue",
