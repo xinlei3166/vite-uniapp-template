@@ -65,9 +65,6 @@ dependencies:
   axios-miniprogram:
     specifier: ^2.7.2
     version: 2.7.2
-  call-bind:
-    specifier: ^1.0.7
-    version: 1.0.7
   dayjs:
     specifier: ^1.11.13
     version: 1.11.13
@@ -80,27 +77,6 @@ dependencies:
   exceljs:
     specifier: ^4.4.0
     version: 4.4.0
-  function-bind:
-    specifier: ^1.1.2
-    version: 1.1.2
-  get-intrinsic:
-    specifier: ^1.2.4
-    version: 1.2.4
-  gopd:
-    specifier: ^1.0.1
-    version: 1.0.1
-  has-property-descriptors:
-    specifier: ^1.0.2
-    version: 1.0.2
-  has-proto:
-    specifier: ^1.0.3
-    version: 1.0.3
-  has-symbols:
-    specifier: ^1.0.3
-    version: 1.0.3
-  hasown:
-    specifier: ^2.0.2
-    version: 2.0.2
   mitt:
     specifier: ^3.0.1
     version: 3.0.1
@@ -113,9 +89,6 @@ dependencies:
   nutui-uniapp:
     specifier: ^1.8.1
     version: 1.8.1(@uni-helper/uni-app-types@1.0.0-alpha.6)(vue@3.4.38)
-  object-inspect:
-    specifier: ^1.13.3
-    version: 1.13.3
   pinia:
     specifier: ~2.0.36
     version: 2.0.36(typescript@5.7.2)(vue@3.4.38)
@@ -125,12 +98,6 @@ dependencies:
   qs:
     specifier: ^6.13.1
     version: 6.13.1
-  set-function-length:
-    specifier: ^1.2.2
-    version: 1.2.2
-  side-channel:
-    specifier: ^1.0.6
-    version: 1.0.6
   sortablejs:
     specifier: ^1.15.4
     version: 1.15.4
@@ -205,6 +172,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.20
     version: 10.4.20(postcss@8.4.49)
+  call-bind:
+    specifier: ^1.0.7
+    version: 1.0.7
   consola:
     specifier: ^3.2.3
     version: 3.2.3
@@ -232,6 +202,27 @@ devDependencies:
   eslint-plugin-vue:
     specifier: ^9.31.0
     version: 9.31.0(eslint@8.57.1)
+  function-bind:
+    specifier: ^1.1.2
+    version: 1.1.2
+  get-intrinsic:
+    specifier: ^1.2.4
+    version: 1.2.4
+  gopd:
+    specifier: ^1.0.1
+    version: 1.0.1
+  has-property-descriptors:
+    specifier: ^1.0.2
+    version: 1.0.2
+  has-proto:
+    specifier: ^1.0.3
+    version: 1.0.3
+  has-symbols:
+    specifier: ^1.0.3
+    version: 1.0.3
+  hasown:
+    specifier: ^2.0.2
+    version: 2.0.2
   less:
     specifier: ^4.2.1
     version: 4.2.1
@@ -244,6 +235,9 @@ devDependencies:
   npm-run-all:
     specifier: ^4.1.5
     version: 4.1.5
+  object-inspect:
+    specifier: ^1.13.3
+    version: 1.13.3
   picocolors:
     specifier: latest
     version: 1.1.1
@@ -256,6 +250,12 @@ devDependencies:
   sass:
     specifier: ~1.69.7
     version: 1.69.7
+  set-function-length:
+    specifier: ^1.2.2
+    version: 1.2.2
+  side-channel:
+    specifier: ^1.0.6
+    version: 1.0.6
   simple-git-hooks:
     specifier: latest
     version: 2.11.1
