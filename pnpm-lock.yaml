@@ -68,9 +68,6 @@ dependencies:
   dayjs:
     specifier: ^1.11.13
     version: 1.11.13
-  define-data-property:
-    specifier: ^1.1.4
-    version: 1.1.4
   echarts:
     specifier: ^5.5.1
     version: 5.5.1
@@ -184,6 +181,9 @@ devDependencies:
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
+  define-data-property:
+    specifier: ^1.1.4
+    version: 1.1.4
   es-define-property:
     specifier: ^1.0.0
     version: 1.0.0
