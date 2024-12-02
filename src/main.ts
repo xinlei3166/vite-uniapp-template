@@ -6,7 +6,7 @@ import plugins from '@packages/plugins'
 import '@packages/styles/index.scss'
 import '@packages/styles/reset.scss'
 import '@/styles/index.scss'
-import 'animate.css'
+// import 'animate.css'
 import 'virtual:uno.css'
 
 export function createApp() {
