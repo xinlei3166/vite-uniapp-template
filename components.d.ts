@@ -14,6 +14,12 @@ declare module 'vue' {
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     KevyEmpty: typeof import('./src/components/kevy-empty/components/kevy-empty/kevy-empty.vue')['default']
     Navbar: typeof import('./src/components/layout/Navbar.vue')['default']
+    NutIcon: typeof import('nutui-uniapp/components/icon/icon.vue')['default']
+    NutSwiper: typeof import('nutui-uniapp/components/swiper/swiper.vue')['default']
+    NutSwiperItem: typeof import('nutui-uniapp/components/swiperitem/swiperitem.vue')['default']
+    NutTabPane: typeof import('nutui-uniapp/components/tabpane/tabpane.vue')['default']
+    NutTabs: typeof import('nutui-uniapp/components/tabs/tabs.vue')['default']
+    NutTag: typeof import('nutui-uniapp/components/tag/tag.vue')['default']
     Router: typeof import('./src/components/layout/Router.vue')['default']
     TabBar: typeof import('./src/components/layout/TabBar.vue')['default']
   }

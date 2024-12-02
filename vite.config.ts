@@ -1,6 +1,8 @@
 import { loadEnv, defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import UnoCSS from 'unocss/vite'
+// import autoprefixer from 'autoprefixer'
+// import UnoCssPostcss from '@unocss/postcss'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
@@ -40,15 +42,20 @@ export default ({ mode, command }) => {
       }
     },
     css: {
-      // postcss: {
-      //   plugins: [
-      //     require('@unocss/postcss')({}),
-      //     require('autoprefixer')({
-      //       overrideBrowserslist: ['Android >= 4', 'ios >= 8'],
-      //       remove: process.env.UNI_PLATFORM !== 'h5'
-      //     })
-      //   ]
-      // },
+      postcss: {
+        plugins: [
+          // UnoCssPostcss({}),
+          // autoprefixer({
+          //   overrideBrowserslist: ['Android >= 4', 'ios >= 8'],
+          //   remove: process.env.UNI_PLATFORM !== 'h5'
+          // })
+          // require('@unocss/postcss')({}),
+          // require('autoprefixer')({
+          //   overrideBrowserslist: ['Android >= 4', 'ios >= 8'],
+          //   remove: process.env.UNI_PLATFORM !== 'h5'
+          // })
+        ]
+      },
       preprocessorOptions: {
         scss: {
           javascriptEnabled: true,
