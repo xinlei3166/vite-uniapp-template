@@ -14,6 +14,7 @@ const DRIVE_LETTER_REGEX = /^[a-z]:/i
 // @ts-ignore
 export default ({ mode, command }) => {
   console.log('mode', mode)
+  console.log('command', command)
   // const envDir = process.cwd()
   const envDir = path.resolve(process.cwd(), 'env')
   const env = loadEnv(mode, envDir)
