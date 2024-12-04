@@ -1,7 +1,7 @@
 import { createSSRApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
-import piniaPersist from 'pinia-plugin-persist'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import plugins from '@packages/plugins'
 import '@packages/styles/index.scss'
 import '@packages/styles/reset.scss'
@@ -20,7 +20,7 @@ export function createApp() {
   //   })
   // }
   const pinia = createPinia()
-  pinia.use(piniaPersist)
+  pinia.use(piniaPluginPersistedstate)
   app.use(pinia)
   app.use(plugins)
 

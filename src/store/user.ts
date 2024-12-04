@@ -39,12 +39,7 @@ export const useUserStore = defineStore('user', {
     }
   },
   persist: {
-    enabled: true,
-    strategies: [
-      {
-        key: storageKeyPrefix + 'User',
-        storage: storage as any
-      }
-    ]
+    key: storageKeyPrefix + 'User',
+    storage: storage as any
   }
 })
