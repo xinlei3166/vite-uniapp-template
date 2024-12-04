@@ -1,4 +1,5 @@
 export const storage = {
   getItem: uni.getStorageSync,
-  setItem: uni.setStorageSync
+  setItem: uni.setStorageSync,
+  removeItem: uni.removeStorageSync
 }

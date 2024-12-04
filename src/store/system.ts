@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { storage } from './storage'
 
 export interface SystemState {
   showLandingPage: boolean
@@ -17,13 +16,4 @@ export const useSystemStore = defineStore('system', {
       this.showLandingPage = showLandingPage
     }
   }
-  // persist: {
-  //   enabled: true,
-  //   strategies: [
-  //     {
-  //       key: 'system',
-  //       storage: storage as any
-  //     }
-  //   ]
-  // }
 })
