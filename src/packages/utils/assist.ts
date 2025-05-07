@@ -1,5 +1,3 @@
-export const delay = (ms: any) => new Promise(resolve => setTimeout(resolve, ms))
-
 export function typeOf(obj: any) {
   const toString = Object.prototype.toString
   const map = {
@@ -21,6 +19,7 @@ export function typeOf(obj: any) {
 export function validateFields(form: Record<string, any>, messages: Record<string, any>) {
   for (const [k, v] of Object.entries(form)) {
     if (!v) {
+      // eslint-disable-next-line
       messages[k] && uni.showToast({ title: messages[k] })
       return
     }

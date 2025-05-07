@@ -90,6 +90,7 @@ export function uniqueObjArr(
 
   return arr.reduce((previous: any, current: any) => {
     const prop = getPropByPath(current, key)
+    // eslint-disable-next-line
     obj[prop.v] ? '' : (obj[prop.v] = previous.push(current))
     return previous
   }, [])
@@ -116,11 +117,11 @@ export const flattenDeepObjArr = (arr: any[], deepKey = 'children') => {
 // 名称拼接 a/b/c
 export const joinStr = (arr: string[], separator = '/') => arr.join(separator)
 
-export function doSM3(text: String): String {
+export function doSM3(text: string): string {
   return sm3(text)
 }
 
-export const randomString = (len: Number): String => {
+export const randomString = (len: number): string => {
   len = len || 32
   const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
   /** **默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
@@ -221,3 +222,5 @@ export const convertStringToBoolean = (value: string) => {
 export const kebabCase = (str: string) => {
   return str.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`)
 }
+
+export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))

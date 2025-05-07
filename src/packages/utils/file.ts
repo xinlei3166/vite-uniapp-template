@@ -1,4 +1,5 @@
 import { is } from './is'
+import { delay } from './util'
 
 type UploadFile = any
 
@@ -70,4 +71,32 @@ export function hasExcelFile(file: UploadFile): boolean {
     'csv'
   ]
   return hasFileType(file, mimes)
+}
+
+export const writeFile = async (
+  filename: string,
+  content: any,
+  options: Record<string, any> = {}
+) => {
+  const a = document.createElement('a')
+  const blob = new Blob([content], { type: 'text/plain', ...options })
+  a.download = filename
+  a.href = URL.createObjectURL(blob)
+  a.click()
+  await delay(100)
+  a.remove()
+}
+
+export const writeBase64File = async (
+  filename: string,
+  base64Str: string,
+  options: Record<string, any> = {}
+) => {
+  const bStr = atob(base64Str)
+  let n = bStr.length
+  const u8arr = new Uint8Array(n)
+  while (n--) {
+    u8arr[n] = bStr.charCodeAt(n)
+  }
+  await writeFile(filename, u8arr, options)
 }
