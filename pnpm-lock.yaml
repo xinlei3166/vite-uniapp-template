@@ -65,9 +65,6 @@ importers:
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
-      axios-miniprogram:
-        specifier: ^2.7.2
-        version: 2.7.2
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -2315,9 +2312,6 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
-
-  axios-miniprogram@2.7.2:
-    resolution: {integrity: sha512-XC4ZNA9siLj5s6WIRylO5aXTdVPuIOjYfY9ml3MHa7haAdPeEjsa2bnIZLQ3PB/8XvK43inUQ31CZrJZI5yMPg==}
 
   babel-jest@27.5.1:
     resolution: {integrity: sha512-cdQ5dXjGRd0IBRATiQ4mZGlGlRE8kJpjPOixdNRdT+m3UcNqmYWN6rK6nvtXYfY3D76cb8s/O1Ss8ea24PIwcg==}
@@ -8745,8 +8739,6 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
-
-  axios-miniprogram@2.7.2: {}
 
   babel-jest@27.5.1(@babel/core@7.27.1):
     dependencies:
