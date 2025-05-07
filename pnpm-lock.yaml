@@ -65,9 +65,6 @@ importers:
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
-      axios-miniprogram:
-        specifier: ^2.7.2
-        version: 2.7.2
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -86,9 +83,6 @@ importers:
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
-      nutui-uniapp:
-        specifier: ^1.8.1
-        version: 1.8.3(@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
       pinia:
         specifier: ~2.0.36
         version: 2.0.36(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
@@ -1916,13 +1910,6 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-  '@uni-helper/uni-app-types@1.0.0-alpha.6':
-    resolution: {integrity: sha512-t9AKDYBmDaz4IW0fgtBt25ubEzf7kyUeMlHaBaG5nyNGd6pVuDpYkABhsnNPDiZcaHAoN6SbX1SQQx5axDOWbA==}
-    engines: {node: '>=14.18'}
-    peerDependencies:
-      typescript: ^5.0.0
-      vue: ^3.0.0
-
   '@uni-helper/vite-plugin-uni-components@0.2.0':
     resolution: {integrity: sha512-h/rV8Z3N+wus/ZviYzkdRePNSUlkndn5H+wVC17ZXmG+2mqmUfLJdGskzrCbgE7Y1TT7u8E9yMz8Ah/RwMf0GQ==}
 
@@ -2315,9 +2302,6 @@ packages:
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
-
-  axios-miniprogram@2.7.2:
-    resolution: {integrity: sha512-XC4ZNA9siLj5s6WIRylO5aXTdVPuIOjYfY9ml3MHa7haAdPeEjsa2bnIZLQ3PB/8XvK43inUQ31CZrJZI5yMPg==}
 
   babel-jest@27.5.1:
     resolution: {integrity: sha512-cdQ5dXjGRd0IBRATiQ4mZGlGlRE8kJpjPOixdNRdT+m3UcNqmYWN6rK6nvtXYfY3D76cb8s/O1Ss8ea24PIwcg==}
@@ -4373,12 +4357,6 @@ packages:
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
-
-  nutui-uniapp@1.8.3:
-    resolution: {integrity: sha512-9mwYyxUODQpMpVqVXc4g1YfbaGmafSer4ASNSWMjreevTGMIRuXr2hdlIKghYAx2cLOvmuCs7L7n49tgvTKfMA==}
-    peerDependencies:
-      '@uni-helper/uni-app-types': ^1.0.0-alpha.6
-      vue: '>=3.2.0'
 
   nwsapi@2.2.20:
     resolution: {integrity: sha512-/ieB+mDe4MrrKMT8z+mQL8klXydZWGR5Dowt4RAGKbJ3kIGEx3X4ljUo+6V73IXtUPWgfOlU5B9MlGxFO5T+cA==}
@@ -8178,11 +8156,6 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))':
-    dependencies:
-      typescript: 5.8.3
-      vue: 3.5.13(typescript@5.8.3)
-
   '@uni-helper/vite-plugin-uni-components@0.2.0(rollup@4.40.2)':
     dependencies:
       '@antfu/utils': 0.7.10
@@ -8745,8 +8718,6 @@ snapshots:
   available-typed-arrays@1.0.7:
     dependencies:
       possible-typed-array-names: 1.1.0
-
-  axios-miniprogram@2.7.2: {}
 
   babel-jest@27.5.1(@babel/core@7.27.1):
     dependencies:
@@ -11199,11 +11170,6 @@ snapshots:
   nth-check@2.1.1:
     dependencies:
       boolbase: 1.0.0
-
-  nutui-uniapp@1.8.3(@uni-helper/uni-app-types@1.0.0-alpha.6(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3)):
-    dependencies:
-      '@uni-helper/uni-app-types': 1.0.0-alpha.6(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
-      vue: 3.5.13(typescript@5.8.3)
 
   nwsapi@2.2.20: {}
 
