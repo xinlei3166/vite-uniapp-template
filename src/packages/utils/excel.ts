@@ -1,8 +1,9 @@
 // @ts-nocheck
 import Excel from 'exceljs'
+import { writeFile } from './file'
 
 // 具体 api 参考 exceljs 官网文档
-export type ExcelColumn = { header: string; key: string; style: Object; [key: string]: any }
+export type ExcelColumn = { header: string; key: string; style: object; [key: string]: any }
 
 export interface ExcelOptions {
   filename: string
@@ -79,34 +80,4 @@ const autoHeight = worksheet => {
     })
     row.height = lineHeight * maxLine
   })
-}
-
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-
-export const writeFile = async (
-  filename: string,
-  content: any,
-  options: Record<string, any> = {}
-) => {
-  const a = document.createElement('a')
-  const blob = new Blob([content], { type: 'text/plain', ...options })
-  a.download = filename
-  a.href = URL.createObjectURL(blob)
-  a.click()
-  await delay(100)
-  a.remove()
-}
-
-export const writeBase64File = async (
-  filename: string,
-  base64Str: string,
-  options?: Record<string, any> = {}
-) => {
-  const bStr = atob(base64Str)
-  let n = bStr.length
-  const u8arr = new Uint8Array(n)
-  while (n--) {
-    u8arr[n] = bStr.charCodeAt(n)
-  }
-  await writeFile(filename, u8arr, options)
 }

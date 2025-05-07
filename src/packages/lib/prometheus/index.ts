@@ -1,5 +1,5 @@
-import axios from 'axios-miniprogram'
-import type { AxiosRequestConfig } from 'axios-miniprogram'
+import type { UniServiceRequestConfig } from '@packages/lib'
+import { useRequests } from '@packages/lib'
 import dayjs from 'dayjs'
 import { deepClone, getToken } from '@packages/utils'
 
@@ -14,17 +14,17 @@ interface PrometheusOptions {
   proxy?: boolean
   withToken?: boolean
   AuthorizationKey?: string
-  errorHandler?: Function
+  errorHandler?: (...ars: any[]) => void
   timeout?: number
 }
 
-interface PrometheusQueryConfig extends AxiosRequestConfig {}
+type PrometheusQueryConfig = UniServiceRequestConfig
 
 interface PrometheusGetMonitorConfig {
   queryConfig?: PrometheusQueryConfig
   field?: string
   format?: string
-  valueFormat?: Function
+  valueFormat?: (...args: any[]) => void
   title?: string
   name?: string | Array<string>
   yAxisName?: string
@@ -94,6 +94,8 @@ export const usePrometheus = (options?: PrometheusOptions) => {
   const errorHandler = options?.errorHandler
   const timeout = options?.timeout || 60 * 1000
 
+  const requests = useRequests()
+
   /**
    * query
    * @param query 查询表达式
@@ -122,7 +124,7 @@ export const usePrometheus = (options?: PrometheusOptions) => {
 
   const request = async (config: PrometheusQueryConfig = {}): Promise<any> => {
     const headers: any = withToken ? { [AuthorizationKey]: getToken() } : {}
-    const res = await axios.request({ headers, timeout, ...config })
+    const res = await requests.request({ headers, timeout, ...config })
     errorHandler?.(res)
     return res
   }

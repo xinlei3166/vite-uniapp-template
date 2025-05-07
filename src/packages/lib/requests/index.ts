@@ -1,7 +1,8 @@
-import axios from 'axios-miniprogram'
-import type { Config, InternalConfig, RequestsConfig, Method } from '@packages/types'
+import type { Config, RequestsConfig } from '@packages/types'
 import { httpMsg } from '@packages/types/enums'
 import { getToken, writeFile, writeBase64File } from '@packages/utils'
+import UniService from './service.ts'
+import type { UniServiceHttpMethodLowercase } from './service.ts'
 
 function startLoading(showLoading = false) {
   if (!showLoading) return
@@ -14,7 +15,6 @@ function endLoading(showLoading = false) {
   uni.hideLoading()
 }
 
-// const createRequests = (requestsConfig: RequestsConfig = {}) => {
 export const useRequests = (requestsConfig: RequestsConfig = {}) => {
   const baseURL = requestsConfig.baseURL || import.meta.env.VITE_API_URL
   const AuthorizationKey = requestsConfig.AuthorizationKey || 'Access-Token'
@@ -24,10 +24,10 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
   const successCode = requestsConfig.successCode || 0
   const errorHandler = requestsConfig.errorHandler
 
-  const service = axios.create({
+  const service = new UniService({
     baseURL,
     // timeout: 60 * 1000 * 5,
-    withCredentials: true,
+    withCredentials: false,
     headers: {
       // 'Content-Type': 'application/x-www-form-urlencoded',
       // Authorization: 'token',
@@ -36,14 +36,14 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
     requestOptions: {
       showLoading: false,
       withRequestId: false,
-      responseType: 'json', // json, blob
+      responseType: 'json', // 'json' | 'blob' | 'base64' | 'raw'
       fileName: undefined
     }
-  } as Config)
+  })
 
-  // request 拦截器
-  service.interceptors.request.use(
-    async (config: InternalConfig) => {
+  service.use({
+    request: config => {
+      console.log('config', config)
       // config.data = qs.stringify(config.data)
       config.headers = config.headers || {}
       const token = getToken()
@@ -53,19 +53,13 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       startLoading(config?.requestOptions?.showLoading)
       return config
     },
-    error => {
-      return Promise.reject(error)
-    }
-  )
-
-  // response 拦截器
-  service.interceptors.response.use(
-    (response: any) => {
-      endLoading(response?.config?.requestOptions?.showLoading)
-      const { responseType } = response?.config?.requestOptions || {}
+    response: (response, config) => {
+      console.log('response', response)
+      endLoading(config?.requestOptions?.showLoading)
+      const { responseType } = config?.requestOptions || {}
       if (responseType === 'raw') return response
       if (responseType === 'blob') return response.data
-      const { [codeKey]: code, [messageKey]: msg } = response?.data || {}
+      const { [codeKey]: code, [messageKey]: msg } = (response?.data || {}) as Record<string, any>
       if (code && errorCodes.includes(code)) {
         // uni.showToast({ title: msg })
         // uni.navigateTo({ url: '/pages/login/index' })
@@ -78,17 +72,16 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       }
       return response?.data
     },
-    error => {
-      if (error && error.response) {
-        error.message = httpMsg[error.response.status] || httpMsg.errorMsg
+    error: async error => {
+      let errorMessage = ''
+      if (error && error.status) {
+        errorMessage = httpMsg[error.status] || httpMsg.errorMsg
       }
-      if (error.message) {
-        uni.hideToast()
-        uni.showToast({ title: error.message })
-      }
+      uni.hideToast()
+      uni.showToast({ title: `${errorMessage}`, icon: 'none' })
       return Promise.reject(error)
     }
-  )
+  })
 
   const request = (config: Config): Promise<any> =>
     service
@@ -114,11 +107,11 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       .then(res => res)
       .catch(e => console.log(e))
 
-  const patch = (url: string, ...args: any): Promise<any> =>
-    service
-      .patch(url, ...args)
-      .then(res => res)
-      .catch(e => console.log(e))
+  // const patch = (url: string, ...args: any): Promise<any> =>
+  //   service
+  //     .patch(url, ...args)
+  //     .then(res => res)
+  //     .catch(e => console.log(e))
 
   const _delete = (url: string, ...args: any): Promise<any> =>
     service
@@ -128,11 +121,11 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
 
   const download = (url: string, data: any, config: Config = {}): Promise<any> => {
     let api
-    const method = (config.method || 'post') as Method
+    const method = (config.method?.toLocaleLowerCase || 'get') as UniServiceHttpMethodLowercase
     if (method === 'get') {
       api = service[method](url, { ...config, params: data })
     } else {
-      api = service[method](url, data, config)
+      api = (service as any)[method](url, data, config)
     }
     const { fileName, responseType, stringify, cb, blobOptions } = config.requestOptions || {}
     return api
@@ -152,10 +145,11 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
         await write(fileName as string, data, blobOptions)
         return true
       })
-      .catch(e => console.log(e))
+      .catch((e: any) => console.log(e))
   }
 
-  return { request, get, post, put, patch, delete: _delete, download }
+  return { request, get, post, put, delete: _delete, download }
 }
 
-// export const useRequests = createRequests
+export * from './controller'
+export * from './service'
