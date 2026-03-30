@@ -27,7 +27,7 @@
 .uni-form-btn-wrap {
   margin: 64rpx 32rpx 32rpx !important;
   .uni-form-btn {
-    &[type="primary"] {
+    &[type='primary'] {
       background-color: $primary-color !important;
     }
     font-size: 28rpx;
@@ -38,11 +38,10 @@
 }
 
 .uni-btn-custom {
-  &[type="primary"] {
+  &[type='primary'] {
     background-color: $primary-color !important;
   }
   font-size: 28rpx;
   height: 72rpx;
   line-height: 72rpx;
 }
-

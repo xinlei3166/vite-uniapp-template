@@ -90,7 +90,6 @@ export function uniqueObjArr(
 
   return arr.reduce((previous: any, current: any) => {
     const prop = getPropByPath(current, key)
-    // eslint-disable-next-line
     obj[prop.v] ? '' : (obj[prop.v] = previous.push(current))
     return previous
   }, [])

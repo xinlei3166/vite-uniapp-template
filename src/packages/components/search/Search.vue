@@ -143,7 +143,6 @@ import { defineComponent } from 'vue'
 import { props } from './props'
 import { typeOf } from '@packages/utils'
 
-// eslint-disable-next-line
 type SearchType =
   | 'input'
   | 'input-number'
