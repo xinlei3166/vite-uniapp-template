@@ -2,12 +2,14 @@ import type { UniServiceRequestConfig, UniServiceHttpMethod } from '@packages/li
 
 export interface RequestsConfig {
   baseURL?: string
-  AuthorizationKey?: string
+  authorizationKey?: string
   errorCodes?: Array<string | number>
   codeKey?: string
   messageKey?: string
   successCode?: string | number
-  errorHandler?: (...args: any[]) => void
+  errorHandler?: Function
+  noRefreshToken?: boolean
+  refreshTokenApi?: (...args: any[]) => Promise<any>
 }
 
 export type Method = UniServiceHttpMethod

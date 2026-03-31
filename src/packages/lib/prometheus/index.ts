@@ -1,6 +1,6 @@
+import dayjs from 'dayjs'
 import type { UniServiceRequestConfig } from '@packages/lib'
 import { useRequests } from '@packages/lib'
-import dayjs from 'dayjs'
 import { deepClone, getToken } from '@packages/utils'
 
 const config = {
@@ -13,7 +13,7 @@ interface PrometheusOptions {
   base?: string
   proxy?: boolean
   withToken?: boolean
-  AuthorizationKey?: string
+  authorizationKey?: string
   errorHandler?: (...ars: any[]) => void
   timeout?: number
 }
@@ -90,7 +90,7 @@ export const usePrometheus = (options?: PrometheusOptions) => {
   const proxy = options?.proxy
   const baseurl = proxy ? base : server + base
   const withToken = options?.withToken
-  const AuthorizationKey = options?.AuthorizationKey || 'Authorization'
+  const authorizationKey = options?.authorizationKey || 'Authorization'
   const errorHandler = options?.errorHandler
   const timeout = options?.timeout || 60 * 1000
 
@@ -123,7 +123,7 @@ export const usePrometheus = (options?: PrometheusOptions) => {
   }
 
   const request = async (config: PrometheusQueryConfig = {}): Promise<any> => {
-    const headers: any = withToken ? { [AuthorizationKey]: getToken() } : {}
+    const headers: any = withToken ? { [authorizationKey]: getToken() } : {}
     const res = await requests.request({ headers, timeout, ...config })
     errorHandler?.(res)
     return res

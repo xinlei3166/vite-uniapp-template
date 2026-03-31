@@ -1,8 +1,9 @@
 import type { Config, RequestsConfig } from '@packages/types'
-import { httpMsg } from '@packages/types/enums'
+import { httpMsg, ContentTypeEnum } from '@packages/types/enums'
 import { getToken, writeFile, writeBase64File } from '@packages/utils'
-import UniService from './service.ts'
 import type { UniServiceHttpMethodLowercase } from './service.ts'
+import UniService from './service.ts'
+// import { useTokenRefresh } from './useTokenRefresh'
 
 function startLoading(showLoading = false) {
   if (!showLoading) return
@@ -17,21 +18,23 @@ function endLoading(showLoading = false) {
 
 export const useRequests = (requestsConfig: RequestsConfig = {}) => {
   const baseURL = requestsConfig.baseURL || import.meta.env.VITE_API_URL
-  const AuthorizationKey = requestsConfig.AuthorizationKey || 'Access-Token'
+  const authorizationKey = requestsConfig.authorizationKey || 'Authorization'
   const errorCodes = requestsConfig.errorCodes || [500, 400]
   const codeKey = requestsConfig.codeKey || 'code'
   const messageKey = requestsConfig.messageKey || 'message'
   const successCode = requestsConfig.successCode || 0
   const errorHandler = requestsConfig.errorHandler
+  // const noRefreshToken = requestsConfig.noRefreshToken
+  // const refreshTokenApi = requestsConfig.refreshTokenApi
 
   const service = new UniService({
     baseURL,
     // timeout: 60 * 1000 * 5,
     withCredentials: false,
     headers: {
-      // 'Content-Type': 'application/x-www-form-urlencoded',
+      // 'Content-Type': ContentTypeEnum.FormURLEncoded,
       // Authorization: 'token',
-      'Content-Type': 'application/json'
+      'Content-Type': ContentTypeEnum.Json
     },
     requestOptions: {
       showLoading: false,
@@ -41,6 +44,13 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
     }
   })
 
+  // const { handleRefreshed } = useTokenRefresh({
+  //   authorizationKey,
+  //   successCode,
+  //   errorHandler,
+  //   refreshTokenApi
+  // })
+
   service.use({
     request: config => {
       console.log('config', config)
@@ -48,7 +58,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       config.headers = config.headers || {}
       const token = getToken()
       if (token) {
-        config.headers[AuthorizationKey] = token
+        config.headers[authorizationKey] = token
       }
       startLoading(config?.requestOptions?.showLoading)
       return config
@@ -66,6 +76,10 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
         errorHandler?.(msg)
         return response.data
       }
+      // token过期，需要续期
+      // if (code && code === 20011 && !noRefreshToken) {
+      //   return handleRefreshed(service, response.config)
+      // }
       if (code && code !== successCode) {
         uni.hideToast()
         uni.showToast({ title: msg })
