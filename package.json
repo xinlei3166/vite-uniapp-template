@@ -51,7 +51,6 @@
     "build:quickapp-webview": "uni build -p quickapp-webview",
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
-    "type-check": "vue-tsc --noEmit",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "lint": "oxlint",
