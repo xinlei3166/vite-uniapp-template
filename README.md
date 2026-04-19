@@ -4,7 +4,7 @@
 
 ## Framework packages
 
-Vite5 + Vue3 + Pinia + TypeScript + UnoCSS + Uniapp
+Vite + Vue + Pinia + TypeScript + UnoCSS + Uniapp
 
 ## Package Manager
 
