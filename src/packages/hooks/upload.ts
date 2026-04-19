@@ -1,11 +1,20 @@
 import { ref } from 'vue'
+import { ContentTypeEnum } from '@packages/types/enums'
+
+const uploadFile = async (...args: any[]) => {
+  console.log('args', args)
+  return { code: 0, msg: '', data: {} } as Record<string, any>
+}
+
 type UploadProps = any
 type UploadFile = any
+type RequestMethodResponse = any
 export interface UploadConfig {
   upload?: boolean
   maxCount?: number
   maxSize?: number // MB
   accept?: string // .zip,.jpg
+  [key: string]: any
 }
 
 export function useUpload({ maxCount, maxSize, accept, upload = true }: UploadConfig) {
@@ -30,14 +39,16 @@ export function useUpload({ maxCount, maxSize, accept, upload = true }: UploadCo
       return false
     }
     if (upload) return true
-    fileList.value = [...fileList.value, file]
+    const newFileList = [...fileList.value, file]
+    fileList.value = newFileList
+    console.log('fileList', newFileList)
     return false
   }
 
-  const onRemove: UploadProps['onRemove'] = (file: any) => {
-    const index = fileList.value?.indexOf(file)
+  const onRemove: UploadProps['onRemove'] = (context: any) => {
+    const { index } = context
     const newFileList = fileList.value?.slice()
-    newFileList?.splice(index!, 1)
+    newFileList?.splice(index, 1)
     fileList.value = newFileList
   }
 
@@ -55,13 +66,94 @@ export function useUpload({ maxCount, maxSize, accept, upload = true }: UploadCo
     //   .then(() => {
     //     fileList.value = []
     //     uploading.value = false
-    //     message.success('upload successfully.')
+    //     uni.showToast({ title: '上传成功' })
     //   })
     //   .catch(() => {
     //     uploading.value = false
-    //     message.error('upload failed.')
+    //     uni.showToast({ title: '上传失败' })
     //   })
   }
 
-  return { fileList, uploading, onRemove, beforeUpload, onUpload }
+  const createRequestMethod = (
+    getParams: () => Record<string, any> = () => ({})
+  ): UploadProps['requestMethod'] => {
+    return async (fileOrFiles: any) => {
+      const files = Array.isArray(fileOrFiles) ? fileOrFiles : [fileOrFiles]
+      const file = files[0]
+
+      // 1. 构造上传参数
+      const formData = new FormData()
+      formData.append('file', (file.raw ?? file) as any)
+      const params = getParams()
+      const paramKeys = Object.keys(params)
+      if (paramKeys.length) {
+        paramKeys.forEach(key => {
+          formData.append(key, params[key])
+        })
+      }
+
+      // 2. 传入定义的缩略图配置
+      const thumbImageConfigs = [{ width: 600, quality: 85 }]
+      if (!paramKeys.includes('thumb_image_configs')) {
+        formData.append('thumb_image_configs', JSON.stringify(thumbImageConfigs))
+      }
+
+      // 3. 执行请求
+      try {
+        const res = await uploadFile(formData, {
+          headers: { 'Content-Type': ContentTypeEnum.FormData }
+          // onUploadProgress: (event: any) => {
+          //   const percent = event.total ? Math.floor((event.loaded / event.total) * 100) : 0
+          //   console.log('upload progress:', percent)
+          // }
+        })
+
+        if (!res || res.code !== 0) {
+          throw new Error(res.msg || '上传失败')
+        }
+
+        // uni.showToast({ title: '上传成功' })
+        // 关键：返回给 TDesign 的结果
+        const successResponse: RequestMethodResponse = {
+          status: 'success',
+          response: { ...res.data, url: res.data?.url, files }
+        }
+        console.log('requestMethod success', successResponse)
+        return successResponse
+      } catch (err: any) {
+        const errorMessage = `上传失败: ${err.message}`
+        uni.showToast({ title: errorMessage })
+        const failResponse: RequestMethodResponse = {
+          status: 'fail',
+          error: errorMessage,
+          response: { files }
+        }
+        console.error('requestMethod error', err, failResponse)
+        return failResponse
+      }
+    }
+  }
+  const requestMethod = createRequestMethod()
+
+  const onChange = ({ fileList: newFileList }: any) => {
+    const list = newFileList.map((f: any) => {
+      if (f.response) {
+        f.url = f.response.url
+      }
+      return f
+    })
+    fileList.value = list
+    console.log('fileList', list)
+  }
+
+  return {
+    fileList,
+    uploading,
+    onRemove,
+    beforeUpload,
+    onUpload,
+    requestMethod,
+    createRequestMethod,
+    onChange
+  }
 }
