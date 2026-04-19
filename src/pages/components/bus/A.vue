@@ -5,17 +5,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, inject } from 'vue'
-import type { Emitter } from 'mitt'
+import { defineComponent, ref } from 'vue'
+import { useEvent } from '@packages/hooks/event'
 
 export default defineComponent({
   setup() {
-    const bus = inject('bus') as Emitter<any>
+    const event = useEvent()
     const number = ref(0)
 
     function onAdd() {
       number.value++
-      bus.emit('change-number', number.value)
+      event.emit('change-number', number.value)
     }
 
     return { number, onAdd }
