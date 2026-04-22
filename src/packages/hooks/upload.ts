@@ -133,17 +133,6 @@ export function useUpload({ maxCount, maxSize, accept, upload = true }: UploadCo
   }
   const requestMethod = createRequestMethod()
 
-  const onChange = ({ fileList: newFileList }: any) => {
-    const list = newFileList.map((f: any) => {
-      if (f.response) {
-        f.url = f.response.url
-      }
-      return f
-    })
-    fileList.value = list
-    console.log('fileList', list)
-  }
-
   return {
     fileList,
     uploading,
@@ -152,7 +141,6 @@ export function useUpload({ maxCount, maxSize, accept, upload = true }: UploadCo
     fakeRequestMethod,
     onUpload: requestMethod,
     requestMethod,
-    createRequestMethod,
-    onChange
+    createRequestMethod
   }
 }
