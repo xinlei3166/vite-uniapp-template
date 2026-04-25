@@ -65,19 +65,9 @@ export function useData(
     callback?.({ sourceData, data })
   }
 
-  const onSearch = async (_params: Record<string, any> = {}) => {
+  const search = async (_params: Record<string, any> = {}) => {
     pag.current = 1
     await init(_params)
-  }
-
-  async function onTableChange(data: any, context: any, _params: Record<string, any> = {}) {
-    console.log('onTableChange', { data, context, _params })
-    const { pagination } = data
-    if (pagination) {
-      pag.current = pagination.current
-      pag.pageSize = pagination.pageSize
-    }
-    await init({ ..._params })
   }
 
   return {
@@ -86,8 +76,7 @@ export function useData(
     data,
     pagination: pagination === false ? undefined : pag,
     init,
-    onSearch,
-    onTableChange
+    search
   }
 }
 
