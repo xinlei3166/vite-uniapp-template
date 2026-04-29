@@ -17,12 +17,12 @@
 
 <script setup lang="ts">
 import { onBeforeMount, computed, reactive, h } from 'vue'
-import type { Pagination } from '@packages/types'
 import { useData } from '@packages/hooks'
+import type { Pagination } from '@packages/types'
 import { getList } from '@/api'
 
 const params = computed(() => ({}))
-const { loading, data, pagination, init, onSearch } = useData(getList, {
+const { loading, data, pagination, init, search } = useData(getList, {
   params,
   pagination: { pageSize: 10 } // 不传，默认为10
 })
@@ -31,18 +31,20 @@ onBeforeMount(async () => {
   await init()
 })
 
-const search = reactive<Record<string, any>>({
+const searchModel = reactive<Record<string, any>>({
   name1: undefined
 })
 
 async function onReset() {
-  Object.keys(search).forEach(key => (search[key] = undefined))
-  await onSearch()
+  Object.keys(searchModel).forEach(key => (searchModel[key] = undefined))
+  await search()
 }
 
 async function onTableChange(pag: Pagination) {
-  pagination.current = pag.current
-  pagination.pageSize = pag.pageSize
+  if (pagination) {
+    pagination.current = pag.current
+    pagination.pageSize = pag.pageSize
+  }
   await init()
 }
 

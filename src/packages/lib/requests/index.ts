@@ -4,6 +4,7 @@ import { getToken, writeFile, writeBase64File } from '@packages/utils'
 import type { UniServiceHttpMethodLowercase } from './service.ts'
 import UniService from './service.ts'
 // import { useTokenRefresh } from './useTokenRefresh'
+import { parseBlobError } from './utils'
 
 function startLoading(showLoading = false) {
   if (!showLoading) return
@@ -63,12 +64,23 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       startLoading(config?.requestOptions?.showLoading)
       return config
     },
-    response: (response, config) => {
+    response: async (response, config) => {
       console.log('response', response)
       endLoading(config?.requestOptions?.showLoading)
-      const { responseType } = config?.requestOptions || {}
+      const { responseType, useHeaderFileName } = config?.requestOptions || {}
       if (responseType === 'raw') return response
-      if (responseType === 'blob') return response.data
+      if (responseType === 'blob') {
+        const contentType = response.headers?.['content-type']
+        if (contentType.includes('application/json')) {
+          const blobError = await parseBlobError(response.data, messageKey)
+          uni.showToast({ title: blobError.message || '下载失败' })
+          return response.data
+        }
+        if (useHeaderFileName) {
+          return response
+        }
+        return response.data
+      }
       const { [codeKey]: code, [messageKey]: msg } = (response?.data || {}) as Record<string, any>
       if (code && errorCodes.includes(code)) {
         // uni.showToast({ title: msg })
@@ -86,7 +98,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       }
       return response?.data
     },
-    error: async error => {
+    error: error => {
       let errorMessage = ''
       if (error && error.status) {
         errorMessage = httpMsg[error.status] || httpMsg.errorMsg
@@ -141,15 +153,37 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
     } else {
       api = (service as any)[method](url, data, config)
     }
-    const { fileName, responseType, stringify, cb, blobOptions } = config.requestOptions || {}
+    const { fileName, responseType, stringify, cb, blobOptions, useHeaderFileName } =
+      config.requestOptions || {}
+    let headerFileName = ''
     return api
       .then(async (res: any) => {
         cb?.(res)
         let data
         if (responseType === 'blob') {
-          data = res
+          if (!res) return false
+          if (useHeaderFileName) {
+            data = res.data
+            // 从response的headers中获取filename, "Content-disposition", "attachment; filename=xxxx.docx"
+            // 1.获取 Header，注意大小写兼容
+            const contentDisposition =
+              res.headers['content-disposition'] || res.headers['Content-Disposition']
+            if (contentDisposition) {
+              // 2.匹配 filename 或 filename*
+              const fileNameMatch = contentDisposition.match(
+                /filename\*?=['"]?(?:UTF-8'')?([^;'\n]*)['"]?/i
+              )
+              if (fileNameMatch && fileNameMatch[1]) {
+                // 3.解码
+                headerFileName = decodeURIComponent(fileNameMatch[1])
+              }
+            }
+            console.log('headerFileName:', headerFileName)
+          } else {
+            data = res
+          }
         } else {
-          const { code, data: _data, message: msg } = res
+          const { code, data: _data } = res
           if (code && code !== successCode) {
             return
           }

@@ -17,8 +17,8 @@
       <a-table-column key="updateTime" title="更新时间" data-index="updateTime" />
       <a-table-column key="operation" title="操作" width="150rpx">
         <template #default="text, record">
-          <span class="btn" @click="onEdit(record)">编辑</span>
-          <span class="btn" @click="onPreview(record)">预览</span>
+          <span class="btn" @click="onEdit()">编辑</span>
+          <span class="btn" @click="onPreview()">预览</span>
         </template>
       </a-table-column>
     </a-table>
@@ -27,12 +27,12 @@
 
 <script setup lang="ts">
 import { defineComponent, computed, onBeforeMount } from 'vue'
-import type { Pagination } from '@packages/types'
 import { useData } from '@packages/hooks'
+import type { Pagination } from '@packages/types'
 import { getList } from '@/api'
 
 const params = computed(() => ({}))
-const { loading, data, pagination, init, onSearch } = useData(getList, {
+const { loading, data, pagination, init, search } = useData(getList, {
   params,
   pagination: { pageSize: 10 } // 不传，默认为10
 })
@@ -41,8 +41,10 @@ onBeforeMount(async () => {
 })
 
 async function onTableChange(pag: Pagination) {
-  pagination.current = pag.current
-  pagination.pageSize = pag.pageSize
+  if (pagination) {
+    pagination.current = pag.current
+    pagination.pageSize = pag.pageSize
+  }
   await init()
 }
 
