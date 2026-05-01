@@ -1,13 +1,13 @@
-import { loadEnv, defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
-import UnoCSS from 'unocss/vite'
-// import autoprefixer from 'autoprefixer'
-// import UnoCssPostcss from '@unocss/postcss'
-import { createHtmlPlugin } from 'vite-plugin-html'
-import AutoImport from 'unplugin-auto-import/vite'
 // import Components from 'unplugin-vue-components/vite'
 import Components from '@uni-helper/vite-plugin-uni-components'
 import path from 'path'
+import UnoCSS from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { loadEnv, defineConfig } from 'vite'
+// import autoprefixer from 'autoprefixer'
+// import UnoCssPostcss from '@unocss/postcss'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g
 const DRIVE_LETTER_REGEX = /^[a-z]:/i
@@ -23,7 +23,7 @@ export default ({ mode, command }) => {
   return defineConfig({
     define: {
       __APP_TITLE__: JSON.stringify(env.VITE_APP_TITLE),
-      __DYNAMIC_MENU__: env.VITE_DYNAMIC_MENU
+      __DYNAMIC_MENU__: env.VITE_ENABLE_DYNAMIC_MENU
     },
     envDir,
     build: {
