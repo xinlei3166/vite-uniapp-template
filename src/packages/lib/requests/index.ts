@@ -1,6 +1,11 @@
 import type { Config, RequestsConfig } from '@packages/types'
 import { httpMsg, ContentTypeEnum } from '@packages/types/enums'
-import { getToken, writeFile, writeBase64File } from '@packages/utils'
+import {
+  getToken,
+  writeFile,
+  writeBase64File,
+  getFileNameFromContentDisposition
+} from '@packages/utils'
 import type { UniServiceHttpMethodLowercase } from './service.ts'
 import UniService from './service.ts'
 // import { useTokenRefresh } from './useTokenRefresh'
@@ -20,7 +25,8 @@ function endLoading(showLoading = false) {
 export const useRequests = (requestsConfig: RequestsConfig = {}) => {
   const baseURL = requestsConfig.baseURL || import.meta.env.VITE_API_URL
   const authorizationKey = requestsConfig.authorizationKey || 'Authorization'
-  const errorCodes = requestsConfig.errorCodes || [500, 400]
+  // 20004: 登录超时, 20010: token错误, 20012: token版本错误, 20102: 用户已禁用
+  const errorCodes = requestsConfig.errorCodes || [20004, 20010, 20012, 20102]
   const codeKey = requestsConfig.codeKey || 'code'
   const messageKey = requestsConfig.messageKey || 'message'
   const successCode = requestsConfig.successCode || 0
@@ -72,7 +78,13 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
       if (responseType === 'blob') {
         const contentType = response.headers?.['content-type']
         if (contentType.includes('application/json')) {
-          const blobError = await parseBlobError(response.data, messageKey)
+          const blobError = await parseBlobError(response.data as any, codeKey, messageKey)
+
+          // token 过期，需要续期
+          // if (blobError.code === 20011 && !noRefreshToken) {
+          //   return handleRefreshed(service, response.config)
+          // }
+
           uni.showToast({ title: blobError.message || '下载失败' })
           return response.data
         }
@@ -165,19 +177,9 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
           if (useHeaderFileName) {
             data = res.data
             // 从response的headers中获取filename, "Content-disposition", "attachment; filename=xxxx.docx"
-            // 1.获取 Header，注意大小写兼容
             const contentDisposition =
               res.headers['content-disposition'] || res.headers['Content-Disposition']
-            if (contentDisposition) {
-              // 2.匹配 filename 或 filename*
-              const fileNameMatch = contentDisposition.match(
-                /filename\*?=['"]?(?:UTF-8'')?([^;'\n]*)['"]?/i
-              )
-              if (fileNameMatch && fileNameMatch[1]) {
-                // 3.解码
-                headerFileName = decodeURIComponent(fileNameMatch[1])
-              }
-            }
+            headerFileName = getFileNameFromContentDisposition(contentDisposition)
             console.log('headerFileName:', headerFileName)
           } else {
             data = res
@@ -190,7 +192,7 @@ export const useRequests = (requestsConfig: RequestsConfig = {}) => {
           data = stringify ? JSON.stringify(_data) : _data
         }
         const write = responseType === 'base64' ? writeBase64File : writeFile
-        await write(fileName as string, data, blobOptions)
+        await write(headerFileName || (fileName as string), data, blobOptions)
         return true
       })
       .catch((e: any) => console.log(e))
