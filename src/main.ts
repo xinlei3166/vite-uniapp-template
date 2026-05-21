@@ -1,12 +1,11 @@
-import { createSSRApp } from 'vue'
-import App from './App.vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import { createSSRApp } from 'vue'
 import plugins from '@packages/plugins'
+import App from './App.vue'
 import '@packages/styles/index.scss'
 import '@packages/styles/reset.scss'
 import '@/styles/index.scss'
-// import 'animate.css'
 import 'virtual:uno.css'
 
 export function createApp() {

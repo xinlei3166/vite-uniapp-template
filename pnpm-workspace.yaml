@@ -1,0 +1,12 @@
+allowBuilds:
+  core-js: true
+  cpu-features: true
+  esbuild: true
+  simple-git-hooks: true
+  ssh2: true
+  vue-demi: true
+peerDependencyRules:
+  ignoreMissing: []
+publicHoistPattern:
+  - '@vue*'
+shamefullyHoist: true
